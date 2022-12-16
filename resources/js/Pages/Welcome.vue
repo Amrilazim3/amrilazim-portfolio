@@ -10,27 +10,27 @@ import Services from "@/Components/Frontend/Services.vue";
 import ContactMe from "../Components/Frontend/ContactMe.vue";
 
 defineProps({
-  skills: Object,
-  projects: Object,
+    skills: Object,
+    projects: Object,
 });
 </script>
 
 <template>
-  <Head title="Welcome to portfolio" />
-  <FrontendLayout>
-    <!-- Hero primary -->
-    <Hero />
-    <!-- Promote tail-100 -->
-    <Promote />
-    <!-- About secondary -->
-    <About />
-    <!-- Skills tail-100 -->
-    <Skills :skills="skills" />
-    <!-- Portfolio primary -->
-    <Portfolio :skills="skills" :projects="projects" />
-    <!-- Services secondary -->
-    <Services />
-    <!-- Contact primary -->
-    <ContactMe />
-  </FrontendLayout>
+    <Head title="Welcome to portfolio" />
+    <FrontendLayout>
+        <!-- Hero primary -->
+        <Hero />
+        <!-- Promote tail-100 -->
+        <Promote />
+        <!-- About secondary -->
+        <About />
+        <!-- Skills tail-100 -->
+        <Skills :skills="skills" />
+        <!-- Portfolio primary -->
+        <Portfolio :skills="skills" :projects="projects" />
+        <!-- Services secondary -->
+        <Services />
+        <!-- Contact primary -->
+        <ContactMe />
+    </FrontendLayout>
 </template>
