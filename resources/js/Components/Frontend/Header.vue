@@ -34,7 +34,7 @@ onMounted(() => {
     >
       <a href="https://laraveller.com/" class="flex items-center">
         <img
-          src="http://portfolio.test/img/logo.png"
+          src="http://localhost/img/logo.png"
           class="mr-3 h-6 sm:h-9"
           alt="Laraveller Logo"
         />
