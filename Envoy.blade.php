@@ -1,5 +1,31 @@
 @import('exolnet/laravel-envoy')
 
+@task('deploy:link:files')
+    @foreach ($linkedFiles as $file)
+        @php
+            [$from, $file] = explode(":", $file);
+        @endphp
+
+        mkdir -p `dirname "{{ $sharedPath }}/{{ $from }}"`
+
+        if [ -f "{{ $releasePath }}/{{ $file }}" ]; then
+            if [ ! -f "{{ $sharedPath }}/{{ $from }}" ]; then
+                cp "{{ $releasePath }}/{{ $from }}" "{{ $sharedPath }}/{{ $from }}"
+            fi
+
+            rm -f "{{ $releasePath }}/{{ $file }}"
+        fi
+
+        if [ ! -f "{{ $sharedPath }}/{{ $from }}" ]; then
+            touch "{{ $sharedPath }}/{{ $from }}"
+        fi
+
+        mkdir -p `dirname "{{ $releasePath }}/{{ $file }}"`
+
+        ln -srfn "{{ $sharedPath }}/{{ $from }}" "{{ $releasePath }}/{{ $file }}"
+    @endforeach
+@endtask
+
 @macro('deploy:no-npm')
     assert:commit
     deploy:starting
@@ -25,32 +51,6 @@
         deploy:cleanup
     deploy:finished
 @endmacro
-
-@task('deploy:link:files')
-    @foreach ($linkedFiles as $file)
-        @php
-            [$from, $file] = explode(":", $file);
-        @endphp
-
-        mkdir -p `dirname "{{ $sharedPath }}/{{ $from }}"`
-
-        if [ -f "{{ $releasePath }}/{{ $file }}" ]; then
-            if [ ! -f "{{ $sharedPath }}/{{ $from }}" ]; then
-                cp "{{ $releasePath }}/{{ $file }}" "{{ $sharedPath }}/{{ $from }}"
-            fi
-
-            rm -f "{{ $releasePath }}/{{ $file }}"
-        fi
-
-        if [ ! -f "{{ $sharedPath }}/{{ $from }}" ]; then
-            touch "{{ $sharedPath }}/{{ $from }}"
-        fi
-
-        mkdir -p `dirname "{{ $releasePath }}/{{ $file }}"`
-
-        ln -srfn "{{ $sharedPath }}/{{ $from }}" "{{ $releasePath }}/{{ $file }}"
-    @endforeach
-@endtask
 
 @task('deploy:publish')
     cd "{{ $releasePath }}"
