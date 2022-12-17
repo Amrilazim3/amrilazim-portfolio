@@ -9,7 +9,7 @@ defineProps({
         <div class="container mx-auto">
             <div class="grid grid-cols-8 md:grid-cols-10">
                 <div
-                    class=""
+                    class="pb-10"
                     v-for="skill in skills.data"
                     :key="skill.id"
                 >

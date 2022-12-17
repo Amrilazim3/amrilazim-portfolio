@@ -1,26 +1,30 @@
 <script setup>
-import { ref, onMounted } from "vue";
+import { ref, onMounted, reactive } from "vue";
 const showMobileMenu = ref("false");
 const scrollBg = ref(false);
 
-const navigations = [
-    { name: "Home", href: "#home", active: false },
+const navigations = reactive([
+    { name: "Home", href: "#home", active: true },
     { name: "About", href: "#about", active: false },
     { name: "Portfolio", href: "#portfolio", active: false },
     { name: "Services", href: "#services", active: false },
     { name: "Contact", href: "#contact", active: false },
-];
+]);
+
 const setScrollBg = (value) => {
     scrollBg.value = value;
 };
 
 const activeLink = (index) => {
     navigations.forEach((link, key) => {
-        if (key == index) {
+        console.log("the index we click is " + index);
+        console.log(key);
+        if (key === index) {
             link.active = true;
         } else {
             link.active = false;
         }
+        console.log(link);
     });
 };
 
@@ -87,6 +91,7 @@ onMounted(() => {
                 >
                     <li v-for="(navigation, index) in navigations" :key="index">
                         <a
+                            @click="activeLink(index)"
                             :href="navigation.href"
                             class="block py-2 pr-4 pl-3 rounded"
                             :class="
@@ -94,8 +99,6 @@ onMounted(() => {
                                     ? 'text-light-tail-100 dark:text-white'
                                     : 'text-light-tail-500 dark:text-dark-navy-100 hover:text-light-tail-100 dark:hover:text-white'
                             "
-                            aria-current="page"
-                            @click="activeLink(index)"
                             >{{ navigation.name }}</a
                         >
                     </li>
