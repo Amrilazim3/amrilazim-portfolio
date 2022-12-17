@@ -75,9 +75,6 @@ const submit = () => {
                             <h4 class="font-body text-xl mb-1">
                                 Have a question?
                             </h4>
-                            <p class="mb-1 text-paragraph"
-                                >I am here to help you.</p
-                            >
                             <p class="text-accent font-normal">
                                 Email me at a.azim0711@gmail.
                             </p>
