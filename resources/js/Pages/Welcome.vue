@@ -21,7 +21,7 @@ defineProps({
         <!-- Hero primary -->
         <Hero />
         <!-- Promote tail-100 -->
-        <Promote />
+        <!-- <Promote /> -->
         <!-- About secondary -->
         <About />
         <!-- Skills tail-100 -->
