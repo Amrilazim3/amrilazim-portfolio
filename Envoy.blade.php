@@ -18,6 +18,7 @@
 	$slack = $_ENV['DEPLOY_SLACK_WEBHOOK'] ?? null;
 	$healthUrl = $_ENV['DEPLOY_HEALTH_CHECK'] ?? null;
 	$restartQueue = $_ENV['DEPLOY_RESTART_QUEUE'] ?? false;
+	$branch = $_ENV['DEPLOY_BRANCH'] ?? false;
 
 	if ( substr($path, 0, 1) !== '/' ) throw new Exception('Careful - your deployment path does not begin with /');
 
