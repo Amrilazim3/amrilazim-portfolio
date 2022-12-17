@@ -16,12 +16,10 @@ defineProps({
 </script>
 
 <template>
-    <Head title="Welcome to portfolio" />
+    <Head title="Welcome Page" />
     <FrontendLayout>
         <!-- Hero primary -->
         <Hero />
-        <!-- Promote tail-100 -->
-        <!-- <Promote /> -->
         <!-- About secondary -->
         <About />
         <!-- Skills tail-100 -->

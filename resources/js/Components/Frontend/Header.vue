@@ -4,14 +4,24 @@ const showMobileMenu = ref("false");
 const scrollBg = ref(false);
 
 const navigations = [
-    { name: "Home", href: "#home" },
-    { name: "About", href: "#about" },
-    { name: "Portfolio", href: "#portfolio" },
-    { name: "Services", href: "#services" },
-    { name: "Contact", href: "#contact" },
+    { name: "Home", href: "#home", active: false },
+    { name: "About", href: "#about", active: false },
+    { name: "Portfolio", href: "#portfolio", active: false },
+    { name: "Services", href: "#services", active: false },
+    { name: "Contact", href: "#contact", active: false },
 ];
 const setScrollBg = (value) => {
     scrollBg.value = value;
+};
+
+const activeLink = (index) => {
+    navigations.forEach((link, key) => {
+        if (key == index) {
+            link.active = true;
+        } else {
+            link.active = false;
+        }
+    });
 };
 
 onMounted(() => {
@@ -78,8 +88,14 @@ onMounted(() => {
                     <li v-for="(navigation, index) in navigations" :key="index">
                         <a
                             :href="navigation.href"
-                            class="block py-2 pr-4 pl-3 text-light-tail-500 rounded dark:text-dark-navy-100 hover:text-light-tail-100 dark:hover:text-white"
+                            class="block py-2 pr-4 pl-3 rounded"
+                            :class="
+                                navigation.active
+                                    ? 'text-light-tail-100 dark:text-white'
+                                    : 'text-light-tail-500 dark:text-dark-navy-100 hover:text-light-tail-100 dark:hover:text-white'
+                            "
                             aria-current="page"
+                            @click="activeLink(index)"
                             >{{ navigation.name }}</a
                         >
                     </li>
