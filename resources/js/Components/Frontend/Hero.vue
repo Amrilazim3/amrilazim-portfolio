@@ -88,7 +88,7 @@
                 >
                     <img
                         class="rounded-lg"
-                        src="http://localhost/img/hero.jpeg"
+                        src="http://amrilazim.com/img/hero.jpeg"
                         alt="Hero"
                     />
                 </div>

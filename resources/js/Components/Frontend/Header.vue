@@ -48,7 +48,7 @@ onMounted(() => {
         >
             <a href="https://amrilazim.com/" class="flex items-center">
                 <img
-                    src="http://localhost/img/logo.png"
+                    src="http://amrilazim.com/img/logo.png"
                     class="mr-3 h-6 sm:h-9"
                     alt="User Icon"
                 />
