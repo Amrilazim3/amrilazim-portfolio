@@ -23,7 +23,7 @@ defineProps({
             }"
         >
             <div class="flex flex-col items-center text-center">
-                <h2 class="section-title">My Projects</h2>
+                <h2 class="section-title">My Projects!</h2>
                 <p class="subtitle">
                     Laravel is current favourite framework to work with any
                     projects because it can do everything from front to the back
