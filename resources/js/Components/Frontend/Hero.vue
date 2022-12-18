@@ -20,14 +20,16 @@
                     <p
                         class="pt-4 pb-8 md:pt-6 md:pb-12 max-w-[480px] text-lg text-center lg:text-left"
                     >
-                    I’m a software engineer specializing in building (and occasionally designing) exceptional digital experiences. Currently, I’m focused on building accessible, human-centered products at Upstatement.
+                        As a full stack developer, I have a strong foundation in
+                        both front-end and back-end development technologies. My
+                        expertise lies in building and maintaining web
+                        applications from the ground up, including the design,
+                        development, and deployment phases.
                     </p>
                     <button
                         class="btn btn-md bg-accent hover:bg-light-secondary hover:text-light-tail-500 dark:hover:bg-dark-secondary dark:hover:text-dark-navy-100 md:btn-lg transition-all"
                     >
-                        <a href="/#contact">
-                            Work with me
-                        </a>
+                        <a href="/#contact"> Work with me </a>
                     </button>
                     <div class="pt-12">
                         <h5

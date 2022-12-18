@@ -37,10 +37,20 @@
                             the user interface (UI) and front-end logic to the
                             back-end services and database. <br />
                             <br />
-                            Responsible for designing, developing, and
-                            maintaining web and mobile applications, as well as
-                            working on the server-side infrastructure that
-                            powers them
+                            On the front-end, I am skilled in HTML, CSS, and
+                            JavaScript, Typescript for native Language as well
+                            as modern frameworks such as Vue.js. I have a strong
+                            understanding of user experience (UX) and am able to
+                            create intuitive and responsive designs that meet
+                            the needs of end users.
+                            <br />
+                            On the back-end, I am proficient in languages such
+                            as PHP, C, C++, as well as databases and server-side
+                            frameworks like Laravel, MySql, and Redis. I am
+                            comfortable working with APIs and microservices, and
+                            have experience with deployment and server
+                            management using tools such as Docker on nginx
+                            server.
                         </p>
                     </div>
                     <a
