@@ -8,7 +8,7 @@
                 <div class="flex space-x-6 items-center justify-center">
                     <img
                         class="h-8 w-auto"
-                        src="http://amrilazim.com/img/logo.png"
+                        src="https://amrilazim.com/img/logo.png"
                         alt="amrilazim.com"
                     />
                 </div>

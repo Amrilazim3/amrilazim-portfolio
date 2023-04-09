@@ -1,5 +1,6 @@
 <script setup>
 import { ref, onMounted, reactive } from "vue";
+import { Link } from '@inertiajs/inertia-vue3'
 const showMobileMenu = ref("false");
 const scrollBg = ref(false);
 
@@ -9,6 +10,7 @@ const navigations = reactive([
     { name: "Portfolio", href: "#portfolio", active: false },
     { name: "Services", href: "#services", active: false },
     { name: "Contact", href: "#contact", active: false },
+    { name: "Resume", href: route().t.url + '/img/amrilazim-resume.pdf', active: false },
 ]);
 
 const setScrollBg = (value) => {
@@ -46,9 +48,9 @@ onMounted(() => {
             class="container flex flex-wrap justify-between items-center mx-auto"
             bis_skin_checked="1"
         >
-            <a href="https://amrilazim.com/" class="flex items-center">
+            <Link :href="route().t.url" class="flex items-center">
                 <img
-                    src="http://amrilazim.com/img/logo.png"
+                    :src="route().t.url + '/img/logo.png'"
                     class="mr-3 h-6 sm:h-9"
                     alt="User Icon"
                 />
@@ -56,7 +58,7 @@ onMounted(() => {
                     class="self-center text-xl font-semibold whitespace-nowrap dark:text-white"
                     >amril azim</span
                 >
-            </a>
+            </Link>
             <button
                 @click="showMobileMenu = !showMobileMenu"
                 data-collapse-toggle="navbar-default"
