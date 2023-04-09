@@ -90,9 +90,10 @@
                 >
                     <img
                         class="rounded-lg"
-                        src="http://amrilazim.com/img/hero.jpeg"
+                        src="http://localhost/img/hero.jpeg"
                         alt="Hero"
                     />
+                    <!-- src="http://amrilazim.com/img/hero.jpeg" -->
                 </div>
             </div>
         </div>
