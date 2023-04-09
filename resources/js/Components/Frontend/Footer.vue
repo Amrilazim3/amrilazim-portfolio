@@ -13,7 +13,7 @@
                     />
                 </div>
                 <p class="text-paragraph opacity-80 text-[15px]">
-                    &copy; 2022 amrilazim.com All right reserved.
+                    &copy; 2023 amrilazim.com All right reserved.
                 </p>
             </div>
         </div>
