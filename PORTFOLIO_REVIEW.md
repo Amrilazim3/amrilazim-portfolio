@@ -268,7 +268,7 @@ Route::middleware(['auth', 'verified'])->group(function () {
 - ✅ Fully responsive layout with mobile-first approach
 - ✅ Comprehensive project case studies with detailed technical information
 - ✅ Professional testimonials section building credibility and trust
-- ✅ Certifications showcase demonstrating continuous learning
+- ✅ **Continuous Learning section** showcasing Laracasts courses and ongoing education
 - ✅ Compelling, business-focused copy throughout all sections
 - ✅ Enhanced contact form with loading states and smooth error handling
 - ✅ Excellent accessibility features with ARIA labels and keyboard navigation

@@ -31,8 +31,8 @@ defineProps({
         <!-- Services secondary -->
         <Services />
         <!-- Testimonials primary -->
-        <Testimonials />
-        <!-- Certifications secondary -->
+        <!-- <Testimonials /> -->
+        <!-- Continuous Learning secondary -->
         <Certifications />
         <!-- Contact primary -->
         <ContactMe />

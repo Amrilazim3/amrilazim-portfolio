@@ -1,51 +1,85 @@
 <script setup>
 defineProps({
-    certifications: {
+    courses: {
         type: Array,
         default: () => [
             {
                 id: 1,
-                title: "Laravel Certified Developer",
-                issuer: "Laravel",
-                date: "2023",
-                image: "https://laravel.com/img/logomark.min.svg",
-                description: "Advanced Laravel framework certification covering Eloquent ORM, Artisan commands, queues, and testing",
-                skills: ["Laravel", "PHP", "Eloquent ORM", "Testing"],
-                credentialId: "LC-2023-001",
-                verifyUrl: "#"
+                title: "Laravel 8 From Scratch",
+                platform: "Laracasts",
+                instructor: "Jeffrey Way",
+                date: "2021",
+                image: "https://laracasts.com/images/series/2018/laravel-from-scratch-2021.svg",
+                description: "Master Laravel fundamentals including Eloquent ORM, authentication, authorization, and building blog post web application",
+                skills: ["Laravel 8", "PHP 7.4", "Eloquent ORM", "Blade Templates", "Authentication", "MVC"],
+                duration: "1 week",
+                status: "Completed",
+                courseUrl: "https://laracasts.com/series/laravel-8-from-scratch"
             },
             {
                 id: 2,
-                title: "Vue.js 3 Complete Course",
-                issuer: "Vue Mastery",
-                date: "2023",
-                image: "https://vuejs.org/images/logo.png",
-                description: "Comprehensive Vue.js 3 course covering Composition API, TypeScript integration, and modern development practices",
-                skills: ["Vue.js 3", "Composition API", "TypeScript", "Pinia"],
-                credentialId: "VM-VUE3-2023",
-                verifyUrl: "#"
+                title: "Vue 3 + Inertia",
+                platform: "Laracasts",
+                instructor: "Jeffrey Way",
+                date: "2022",
+                image: "https://laracasts.com/images/series/2021/vue-3-inertia.svg",
+                description: "Build modern single-page applications with Vue 3, Inertia.js, and Laravel for seamless full-stack development",
+                skills: ["Vue 3", "Inertia.js", "Composition API", "Laravel Integration", "SPA", "Tailwind CSS"],
+                duration: "1 week",
+                status: "Completed",
+                courseUrl: "https://laracasts.com/series/build-modern-laravel-apps-using-inertia-js"
             },
             {
                 id: 3,
-                title: "AWS Cloud Practitioner",
-                issuer: "Amazon Web Services",
+                title: "React From Scratch",
+                platform: "Laracasts",
+                instructor: "Simon Vrachliotis",
                 date: "2022",
-                image: "https://aws.amazon.com/favicon.ico",
-                description: "Foundational cloud computing certification covering AWS services, architecture, and deployment best practices",
-                skills: ["AWS", "Cloud Computing", "S3", "EC2", "Lambda"],
-                credentialId: "AWS-CP-2022-789",
-                verifyUrl: "#"
+                image: "https://laracasts.com/images/series/2020/react-inertia.svg",
+                description: "Learn React fundamentals and integrate with Laravel using Inertia.js for powerful full-stack applications",
+                skills: ["React", "JSX", "Hooks"],
+                duration: "< 1 week",
+                status: "Completed",
+                courseUrl: "https://laracasts.com/series/react-from-scratch"
             },
             {
                 id: 4,
-                title: "Docker & Kubernetes Essentials",
-                issuer: "Linux Foundation",
-                date: "2022",
-                image: "https://www.docker.com/wp-content/uploads/2022/03/Moby-logo.png",
-                description: "Container orchestration and deployment certification focusing on Docker containerization and Kubernetes management",
-                skills: ["Docker", "Kubernetes", "Container Orchestration", "DevOps"],
-                credentialId: "LF-DK-2022-456",
-                verifyUrl: "#"
+                title: "MySQL Database Design",
+                platform: "Laracasts",
+                instructor: "Jeffrey Way",
+                date: "2023",
+                image: "https://laracasts.com/images/series/2017/mysql-database-design.svg",
+                description: "Master database design principles, normalization, relationships, and optimization for scalable applications",
+                skills: ["MySQL", "Database Design", "Normalization", "Relationships", "Optimization"],
+                duration: "1 day",
+                status: "Completed",
+                courseUrl: "https://laracasts.com/series/mysql-database-design"
+            },
+            {
+                id: 5,
+                title: "Laravel 9",
+                platform: "Laracasts",
+                instructor: "Jeffrey Way",
+                date: "2023",
+                image: "https://laracasts.com/images/series/2019/laravel-testing.svg",
+                description: "Comprehensive testing strategies for Laravel applications including unit tests, feature tests, and TDD practices",
+                skills: ["Laravel 9", "PHP 8"],
+                duration: "< 1 day",
+                status: "Completed",
+                courseUrl: "https://laracasts.com/series/whats-new-in-laravel-9"
+            },
+            {
+                id: 6,
+                title: "Laravel 10",
+                platform: "Laracasts",
+                instructor: "Jeffrey Way",
+                date: "2023",
+                image: "https://laracasts.com/images/series/2018/advanced-laravel.svg",
+                description: "Advanced Laravel concepts including service containers, facades, middleware, and custom packages",
+                skills: ["Laravel 10", "PHP 8"],
+                duration: "< 1 day",
+                status: "Completed",
+                courseUrl: "https://laracasts.com/series/whats-new-in-laravel-10"
             }
         ]
     }
@@ -64,47 +98,52 @@ defineProps({
                 :initial="{ opacity: 0, y: 100 }"
                 :visible="{ opacity: 1, y: 0 }"
             >
-                <h2 class="section-title">Certifications & Continuous Learning</h2>
+                <h2 class="section-title">Continuous Learning Journey</h2>
                 <p class="subtitle">
-                    Staying current with industry trends and technologies through professional certifications 
-                    and continuous education. Here are some of my recent achievements and credentials.
+                    Committed to staying current with the latest technologies and best practices. 
+                    Here are some of the courses I've completed to enhance my skills and knowledge.
                 </p>
             </div>
 
-            <div class="grid md:grid-cols-2 lg:grid-cols-2 gap-6 mb-12">
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
                 <div
-                    v-for="(cert, index) in certifications"
-                    :key="cert.id"
+                    v-for="(course, index) in courses"
+                    :key="course.id"
                     class="bg-white dark:bg-dark-navy-500 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 p-6"
                     v-motion
                     :initial="{ opacity: 0, y: 50 }"
                     :visible="{ 
                         opacity: 1, 
                         y: 0,
-                        transition: { delay: index * 150 }
+                        transition: { delay: index * 100 }
                     }"
                 >
-                    <!-- Certificate Header -->
+                    <!-- Course Header -->
                     <div class="flex items-start justify-between mb-4">
                         <div class="flex items-center">
-                            <div class="w-12 h-12 bg-gray-100 dark:bg-gray-700 rounded-lg flex items-center justify-center mr-4">
-                                <svg class="w-6 h-6 text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z" />
+                            <div class="w-12 h-12 bg-blue-100 dark:bg-blue-900 rounded-lg flex items-center justify-center mr-4">
+                                <svg class="w-6 h-6 text-blue-600 dark:text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.746 0 3.332.477 4.5 1.253v13C19.832 18.477 18.246 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
                                 </svg>
                             </div>
                             <div>
-                                <h3 class="font-bold text-lg text-gray-900 dark:text-white">{{ cert.title }}</h3>
-                                <p class="text-accent text-sm font-medium">{{ cert.issuer }}</p>
+                                <h3 class="font-bold text-lg text-gray-900 dark:text-white">{{ course.title }}</h3>
+                                <p class="text-accent text-sm font-medium">{{ course.platform }}</p>
                             </div>
                         </div>
                         <span class="bg-green-100 dark:bg-green-900 text-green-800 dark:text-green-200 px-2 py-1 rounded-full text-xs font-medium">
-                            {{ cert.date }}
+                            {{ course.status }}
                         </span>
                     </div>
 
+                    <!-- Instructor -->
+                    <p class="text-gray-500 dark:text-gray-400 text-sm mb-3">
+                        <span class="font-medium">Instructor:</span> {{ course.instructor }}
+                    </p>
+
                     <!-- Description -->
                     <p class="text-gray-600 dark:text-gray-300 text-sm mb-4 leading-relaxed">
-                        {{ cert.description }}
+                        {{ course.description }}
                     </p>
 
                     <!-- Skills -->
@@ -112,7 +151,7 @@ defineProps({
                         <h4 class="text-sm font-semibold text-gray-900 dark:text-white mb-2">Skills Covered:</h4>
                         <div class="flex flex-wrap gap-2">
                             <span
-                                v-for="skill in cert.skills"
+                                v-for="skill in course.skills"
                                 :key="skill"
                                 class="bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200 px-2 py-1 rounded text-xs"
                             >
@@ -121,21 +160,29 @@ defineProps({
                         </div>
                     </div>
 
-                    <!-- Credential Info -->
+                    <!-- Course Info -->
                     <div class="border-t border-gray-200 dark:border-gray-600 pt-4">
                         <div class="flex items-center justify-between">
-                            <div>
-                                <p class="text-xs text-gray-500 dark:text-gray-400">Credential ID</p>
-                                <p class="text-sm font-mono text-gray-700 dark:text-gray-300">{{ cert.credentialId }}</p>
+                            <div class="flex items-center space-x-4">
+                                <div>
+                                    <p class="text-xs text-gray-500 dark:text-gray-400">Duration</p>
+                                    <p class="text-sm font-medium text-gray-700 dark:text-gray-300">{{ course.duration }}</p>
+                                </div>
+                                <div>
+                                    <p class="text-xs text-gray-500 dark:text-gray-400">Completed</p>
+                                    <p class="text-sm font-medium text-gray-700 dark:text-gray-300">{{ course.date }}</p>
+                                </div>
                             </div>
                             <a
-                                :href="cert.verifyUrl"
+                                :href="course.courseUrl"
+                                target="_blank"
+                                rel="noopener noreferrer"
                                 class="text-accent hover:text-accent-hover text-sm font-medium flex items-center"
                             >
                                 <svg class="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
                                 </svg>
-                                Verify
+                                View Course
                             </a>
                         </div>
                     </div>
@@ -154,21 +201,21 @@ defineProps({
                         🚀 Committed to Continuous Growth
                     </h3>
                     <p class="text-gray-600 dark:text-gray-300 leading-relaxed mb-6">
-                        Technology evolves rapidly, and so do I. I'm constantly learning new technologies, 
-                        attending conferences, and pursuing certifications to stay at the forefront of web development. 
-                        This commitment to growth ensures I can always bring the latest best practices to your projects.
+                        Technology evolves rapidly, and so do I. I'm constantly learning new technologies through 
+                        online courses, practical projects, and staying current with industry best practices. 
+                        This commitment to continuous learning ensures I can always bring the latest techniques to your projects.
                     </p>
                     <div class="grid md:grid-cols-3 gap-6 mt-6">
                         <div class="text-center">
+                            <div class="text-3xl font-bold text-accent mb-2">6+</div>
+                            <div class="text-sm text-gray-600 dark:text-gray-400">Laracasts Courses</div>
+                        </div>
+                        <div class="text-center">
+                            <div class="text-3xl font-bold text-accent mb-2">100+</div>
+                            <div class="text-sm text-gray-600 dark:text-gray-400">Hours of Learning</div>
+                        </div>
+                        <div class="text-center">
                             <div class="text-3xl font-bold text-accent mb-2">4+</div>
-                            <div class="text-sm text-gray-600 dark:text-gray-400">Professional Certifications</div>
-                        </div>
-                        <div class="text-center">
-                            <div class="text-3xl font-bold text-accent mb-2">50+</div>
-                            <div class="text-sm text-gray-600 dark:text-gray-400">Online Courses Completed</div>
-                        </div>
-                        <div class="text-center">
-                            <div class="text-3xl font-bold text-accent mb-2">3+</div>
                             <div class="text-sm text-gray-600 dark:text-gray-400">Years of Experience</div>
                         </div>
                     </div>
