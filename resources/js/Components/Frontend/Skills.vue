@@ -4,12 +4,12 @@ defineProps({
 });
 </script>
 <template>
-    <section class="bg-light-tail-100 dark:bg-dark-navy-500 py-16">
-        <h2 class="text-2xl mb-8 font-semibold text-center">Acquired Skills</h2>
+    <section class="section bg-light-tail-100 dark:bg-dark-navy-500">
         <div class="container mx-auto">
+            <h2 class="section-title text-center">Acquired Skills</h2>
             <div class="grid grid-cols-8 md:grid-cols-10">
                 <div
-                    class="pb-10"
+                    class="pb-8"
                     v-for="skill in skills.data"
                     :key="skill.id"
                 >

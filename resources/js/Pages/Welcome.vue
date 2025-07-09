@@ -7,6 +7,8 @@ import About from "@/Components/Frontend/About.vue";
 import Skills from "@/Components/Frontend/Skills.vue";
 import Portfolio from "@/Components/Frontend/Portfolio.vue";
 import Services from "@/Components/Frontend/Services.vue";
+import Testimonials from "@/Components/Frontend/Testimonials.vue";
+import Certifications from "@/Components/Frontend/Certifications.vue";
 import ContactMe from "../Components/Frontend/ContactMe.vue";
 
 defineProps({
@@ -28,6 +30,10 @@ defineProps({
         <Portfolio :skills="skills" :projects="projects" />
         <!-- Services secondary -->
         <Services />
+        <!-- Testimonials primary -->
+        <Testimonials />
+        <!-- Certifications secondary -->
+        <Certifications />
         <!-- Contact primary -->
         <ContactMe />
     </FrontendLayout>

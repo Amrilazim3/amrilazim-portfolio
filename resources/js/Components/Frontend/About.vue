@@ -26,31 +26,39 @@
                 >
                     <div class="flex flex-col">
                         <h2
-                            class="text-3xl lg:text-4xl font-medium lg:font-extrabold mb-3"
+                            class="text-3xl lg:text-4xl font-medium lg:font-extrabold mb-4"
                         >
-                            About Me
+                            Turning Ideas Into Reality
                         </h2>
-                        <P class="mb-4 text-accent">Full Stack Developer</P>
-                        <hr class="mb-8 opacity-90 dark:opacity-5" />
-                        <p class="mb-8">
-                            As a full-stack developer, I work on all layers of a software application, from
-                            the user interface (UI) and front-end logic to the
-                            back-end services and database. <br />
-                            <br />
-                            On the front-end, I am skilled in HTML, CSS, and
-                            JavaScript, TypeScript for native languages as well
-                            as modern frameworks such as Vue.js. I have a strong
-                            understanding of user experience (UX) and am able to
-                            create intuitive and responsive designs that meet
-                            the needs of end users.
-                            <br />
-                            On the back-end, I am proficient in languages such
-                            as PHP, C, C++, as well as databases and server-side
-                            frameworks like Laravel, MySQL, and Redis. I am
-                            comfortable working with APIs and microservices, and
-                            have experience with deployment and server
-                            management using tools such as Docker on nginx
-                            server.
+                        <P class="mb-3 text-accent">Full Stack Developer & Problem Solver</P>
+                        <hr class="mb-6 opacity-90 dark:opacity-5" />
+                        <p class="mb-6 leading-relaxed">
+                            With over <strong>3+ years</strong> of experience, I specialize in building scalable web applications 
+                            that solve real business problems. My passion lies in creating digital solutions that not only 
+                            look great but perform exceptionally well.
+                        </p>
+                        
+                        <div class="mb-6">
+                            <h3 class="font-semibold text-lg mb-4 text-gray-900 dark:text-white">🎯 What I Excel At:</h3>
+                            <div class="space-y-2 text-sm">
+                                <div class="flex items-center">
+                                    <span class="w-2 h-2 bg-accent rounded-full mr-3"></span>
+                                    <span><strong>Frontend:</strong> Vue.js, JavaScript/TypeScript, Tailwind CSS, Responsive Design</span>
+                                </div>
+                                <div class="flex items-center">
+                                    <span class="w-2 h-2 bg-accent rounded-full mr-3"></span>
+                                    <span><strong>Backend:</strong> Laravel (PHP), MySQL, Redis, RESTful APIs</span>
+                                </div>
+                                <div class="flex items-center">
+                                    <span class="w-2 h-2 bg-accent rounded-full mr-3"></span>
+                                    <span><strong>DevOps:</strong> Docker, Linux Server Management, Git, CI/CD</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <p class="mb-6 leading-relaxed text-sm bg-gray-50 dark:bg-gray-800 p-4 rounded-lg border-l-4 border-accent">
+                            <strong>💡 My Approach:</strong> I believe in writing clean, maintainable code and following industry best practices. 
+                            Every project is an opportunity to create something meaningful that delivers real value to users and businesses.
                         </p>
                     </div>
                     <a

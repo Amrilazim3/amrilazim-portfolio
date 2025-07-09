@@ -18,19 +18,19 @@
                 y: 0,
             }"
         >
-            <div class="flex flex-col items-center text-center">
-                <h2 class="section-title">What I do for clients</h2>
+            <div class="flex flex-col items-center text-center mb-12">
+                <h2 class="section-title">How I Can Help Your Business</h2>
                 <p class="subtitle">
-                    Create a full web application with entire scaffolding of
-                    front-end, back-end, deployment, and maintenance.
+                    From initial concept to final deployment, I provide comprehensive web development services 
+                    that help businesses establish a strong digital presence and achieve their goals.
                 </p>
             </div>
-            <div class="grid lg:grid-cols-4 gap-8">
+            <div class="grid lg:grid-cols-4 gap-6">
                 <div
                     class="bg-light-tail-100 dark:bg-dark-navy-500 p-6 rounded-2xl"
                 >
                     <div
-                        class="text-accent rounded-sm w-12 h-12 flex justify-center items-center mb-24 text-[28px]"
+                        class="text-accent rounded-sm w-12 h-12 flex justify-center items-center mb-16 text-[28px]"
                     >
                         <svg
                             xmlns="http://www.w3.org/2000/svg"
@@ -47,18 +47,18 @@
                             />
                         </svg>
                     </div>
-                    <h4 class="text-xl font-medium mb-2">Web Design</h4>
+                    <h4 class="text-xl font-medium mb-2">UI/UX Design</h4>
                     <p>
-                        Creative and detail-oriented web designer with a strong
-                        background in building visually stunning and
-                        user-friendly websites.
+                        Creating intuitive, user-centered designs that convert visitors into customers. 
+                        I focus on modern aesthetics combined with exceptional usability to ensure your 
+                        website not only looks great but drives results.
                     </p>
                 </div>
                 <div
                     class="bg-light-tail-100 dark:bg-dark-navy-500 p-6 rounded-2xl"
                 >
                     <div
-                        class="text-accent rounded-sm w-12 h-12 flex justify-center items-center mb-24 text-[28px]"
+                        class="text-accent rounded-sm w-12 h-12 flex justify-center items-center mb-16 text-[28px]"
                     >
                         <svg
                             xmlns="http://www.w3.org/2000/svg"
@@ -80,20 +80,18 @@
                             />
                         </svg>
                     </div>
-                    <h4 class="text-xl font-medium mb-2">Web Development</h4>
+                    <h4 class="text-xl font-medium mb-2">Full-Stack Development</h4>
                     <p>
-                        Talented web developer with a strong background in
-                        building modern, responsive websites and web
-                        applications. Proficient in a variety of programming
-                        languages and frameworks, including HTML, CSS,
-                        JavaScript, Typescript, Laravel, Vue.js and Tailwindcss.
+                        Building robust, scalable web applications using Laravel and Vue.js. From database 
+                        design to responsive frontends, I deliver complete solutions that grow with your business. 
+                        Clean code, best practices, and performance optimization included.
                     </p>
                 </div>
                 <div
                     class="bg-light-tail-100 dark:bg-dark-navy-500 p-6 rounded-2xl"
                 >
                     <div
-                        class="text-accent rounded-sm w-12 h-12 flex justify-center items-center mb-24 text-[28px]"
+                        class="text-accent rounded-sm w-12 h-12 flex justify-center items-center mb-16 text-[28px]"
                     >
                         <svg
                             xmlns="http://www.w3.org/2000/svg"
@@ -110,19 +108,18 @@
                             />
                         </svg>
                     </div>
-                    <h4 class="text-xl font-medium mb-2">Mobile Development</h4>
+                    <h4 class="text-xl font-medium mb-2">API Development</h4>
                     <p>
-                        Experienced mobile developer with a strong background in
-                        creating native and hybrid apps for Android platforms.
-                        Proficient in a variety of programming languages and
-                        frameworks, including Laravel, Vue.js, and Ionic.
+                        Creating powerful, secure APIs that connect your applications and enable seamless 
+                        integrations. RESTful services, third-party integrations, and microservices 
+                        architecture that scales with your business needs.
                     </p>
                 </div>
                 <div
                     class="bg-light-tail-100 dark:bg-dark-navy-500 p-6 rounded-2xl"
                 >
                     <div
-                        class="text-accent rounded-sm w-12 h-12 flex justify-center items-center mb-24 text-[28px]"
+                        class="text-accent rounded-sm w-12 h-12 flex justify-center items-center mb-16 text-[28px]"
                     >
                         <svg
                             xmlns="http://www.w3.org/2000/svg"
@@ -139,11 +136,11 @@
                             />
                         </svg>
                     </div>
-                    <h4 class="text-xl font-medium mb-2">DevOps</h4>
+                    <h4 class="text-xl font-medium mb-2">DevOps & Deployment</h4>
                     <p>
-                        Proficient in a technology such as Docker. Strong
-                        background in system administration and configuration
-                        management in a Linux-Based server.
+                        Ensuring your applications run smoothly in production with Docker containerization, 
+                        automated deployments, and server optimization. Reliable hosting solutions that 
+                        keep your business running 24/7.
                     </p>
                 </div>
             </div>

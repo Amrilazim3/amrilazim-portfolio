@@ -7,9 +7,9 @@ defineProps({
 </script>
 <template>
     <section
-        id="portfolio"
-        class="section bg-light-primary dark:bg-dark-primary min-h-[1400px]"
-    >
+    id="portfolio"
+    class="section bg-light-primary dark:bg-dark-primary"
+>
         <div
             class="container mx-auto"
             v-motion
@@ -23,11 +23,10 @@ defineProps({
             }"
         >
             <div class="flex flex-col items-center text-center">
-                <h2 class="section-title">My Projects!</h2>
+                <h2 class="section-title">Featured Projects & Case Studies</h2>
                 <p class="subtitle">
-                    Laravel is my current favorite framework to work with any
-                    projects because it can do everything from front to the back
-                    end side.
+                    Real projects, real results. Here's a showcase of web applications I've built for clients, 
+                    featuring detailed case studies that demonstrate my problem-solving approach and technical expertise.
                 </p>
             </div>
         </div>

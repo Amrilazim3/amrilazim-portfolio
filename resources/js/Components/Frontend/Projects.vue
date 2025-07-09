@@ -25,7 +25,7 @@ const filterProjects = (id) => {
 <template>
     <div class="container mx-auto">
         <nav
-            class="mb-12 border-b-2 border-light-tail-100 dark:text-dark-navy-100"
+            class="mb-8 border-b-2 border-light-tail-100 dark:text-dark-navy-100"
         >
             <ul class="grid grid-cols-5 md:grid-cols-8">
                 <li class="cursor-pointer capitalize m-4 justify-self-stretch">
@@ -60,7 +60,7 @@ const filterProjects = (id) => {
                 </li>
             </ul>
         </nav>
-        <section class="grid gap-y-12 lg:grid-cols-3 lg:gap-8">
+        <section class="grid gap-y-8 lg:grid-cols-3 lg:gap-6">
             <Project
                 v-for="project in filteredProjects"
                 :key="project.id"

@@ -9,22 +9,21 @@
                 class="flex flex-col md:flex-row items-center h-full pt-8 lg:my-36"
             >
                 <div class="flex-1 flex flex-col items-center lg:items-start">
-                    <p class="text-lg text-accent text-md mb-[22px]">
-                        Hey, I'm Amril
+                    <p class="text-lg text-accent text-md mb-[22px] animate-pulse">
+                        👋 Hey, I'm Amril
                     </p>
                     <h1
                         class="text-4xl leading-[44px] md:text-5xl md:leading-tight lg:text-7xl lg:leading-[1.2] font-bold md:tracking-[-2px]"
                     >
-                        I am a Full Stack Developer
+                        I Build Amazing 
+                        <span class="text-accent">Digital Experiences</span>
                     </h1>
                     <p
-                        class="pt-4 pb-8 md:pt-6 md:pb-12 max-w-[480px] text-lg text-center lg:text-left"
+                        class="pt-4 pb-6 md:pt-6 md:pb-8 max-w-[520px] text-lg text-center lg:text-left leading-relaxed"
                     >
-                        As a full stack developer, I have a strong foundation in
-                        both front-end and back-end development technologies. My
-                        expertise lies in building and maintaining web
-                        applications from the ground up, including the design,
-                        development, and deployment phases.
+                        Full-stack developer specializing in <strong>Laravel</strong> and <strong>Vue.js</strong>. 
+                        I transform ideas into powerful web applications that drive business growth and deliver 
+                        exceptional user experiences. From concept to deployment, I handle it all.
                     </p>
                     <button
                         class="btn btn-md bg-accent hover:bg-light-secondary hover:text-light-tail-500 dark:hover:bg-dark-secondary dark:hover:text-dark-navy-100 md:btn-lg transition-all"

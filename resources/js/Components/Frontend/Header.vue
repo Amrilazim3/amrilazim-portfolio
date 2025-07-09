@@ -9,6 +9,8 @@ const navigations = reactive([
     { name: "About", href: "#about", active: false },
     { name: "Portfolio", href: "#portfolio", active: false },
     { name: "Services", href: "#services", active: false },
+    { name: "Testimonials", href: "#testimonials", active: false },
+    { name: "Certifications", href: "#certifications", active: false },
     { name: "Contact", href: "#contact", active: false },
     { name: "Resume", href: route().t.url + '/img/amrilazim-resume.pdf', active: false },
 ]);

@@ -50,7 +50,7 @@ const submit = () => {
             </div>
             <div class="flex flex-col lg:flex-row lg:gap-x-8">
                 <div
-                    class="flex flex-1 flex-col items-start space-y-8 mb-12 lg:mb-0 lg:pt-2"
+                    class="flex flex-1 flex-col items-start space-y-6 mb-8 lg:mb-0 lg:pt-2"
                 >
                     <div class="flex flex-col lg:flex-row gap-x-4">
                         <div
@@ -83,7 +83,7 @@ const submit = () => {
                 </div>
                 <form
                     @submit.prevent="submit"
-                    class="space-y-8 w-full max-w-md"
+                    class="space-y-6 w-full max-w-md"
                     role="form"
                     aria-label="Contact form"
                 >
