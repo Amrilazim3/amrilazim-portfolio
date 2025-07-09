@@ -1,4 +1,15 @@
-<script setup></script>
+<script setup>
+// Function to track social media clicks
+const trackSocialClick = (platform) => {
+    if (typeof window !== 'undefined' && window.gtag) {
+        window.gtag('event', 'social_click', {
+            event_category: 'engagement',
+            event_label: platform,
+            value: 1
+        });
+    }
+};
+</script>
 <template>
     <section
         id="home"
@@ -21,12 +32,14 @@
                     <p
                         class="pt-4 pb-6 md:pt-6 md:pb-8 max-w-[520px] text-lg text-center lg:text-left leading-relaxed"
                     >
-                        Full-stack developer specializing in <strong>Laravel</strong> and <strong>Vue.js</strong>. 
-                        I transform ideas into powerful web applications that drive business growth and deliver 
-                        exceptional user experiences. From concept to deployment, I handle it all.
+                        Full-stack developer with experience in both <strong>web and mobile development</strong>. 
+                        I specialize in <strong>Laravel</strong>, <strong>React/React Native (Expo)</strong>, and <strong>Vue.js</strong>. 
+                        I transform ideas into powerful applications that drive business growth and deliver 
+                        exceptional user experiences across all platforms. From concept to deployment, I handle it all.
                     </p>
                     <button
                         class="btn btn-md bg-accent hover:bg-light-secondary hover:text-light-tail-500 dark:hover:bg-dark-secondary dark:hover:text-dark-navy-100 md:btn-lg transition-all"
+                        @click="trackSocialClick('hero_cta')"
                     >
                         <a href="/#contact"> Work with me </a>
                     </button>
@@ -40,6 +53,7 @@
                             <a
                                 class="w-12 h-12 rounded-full flex items-center justify-center border border-white text-black dark:text-white hover:bg-light-secondary hover:border-light-secondary dark:hover:bg-dark-secondary dark:hover:border-dark-secondary mr-3 sm:mr-4"
                                 href="https://twitter.com/amrilazim_"
+                                @click="trackSocialClick('twitter')"
                             >
                                 <svg
                                     width="16"
@@ -55,6 +69,7 @@
                             <a
                                 class="w-12 h-12 rounded-full flex items-center justify-center border border-white text-black dark:text-white hover:bg-light-secondary hover:border-light-secondary dark:hover:bg-dark-secondary dark:hover:border-dark-secondary mr-3 sm:mr-4"
                                 href="https://www.linkedin.com/in/amril-azim-ab5361255"
+                                @click="trackSocialClick('linkedin')"
                             >
                                 <svg
                                     width="14"
@@ -70,6 +85,7 @@
                             <a
                                 class="w-12 h-12 rounded-full flex items-center justify-center border border-white text-black dark:text-white hover:bg-light-secondary hover:border-light-secondary dark:hover:bg-dark-secondary dark:hover:border-dark-secondary mr-3 sm:mr-4"
                                 href="https://github.com/Amrilazim3"
+                                @click="trackSocialClick('github')"
                             >
                                 <svg
                                     xmlns="http://www.w3.org/2000/svg"
@@ -91,7 +107,9 @@
                     <img
                         class="rounded-lg"
                         src="/img/hero.jpeg"
-                        alt="Hero"
+                        alt="Amril Azim - Full Stack Developer"
+                        loading="eager"
+                        fetchpriority="high"
                     />
                 </div>
             </div>

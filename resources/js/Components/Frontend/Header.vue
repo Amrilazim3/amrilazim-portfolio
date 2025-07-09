@@ -22,6 +22,25 @@ const setScrollBg = (value) => {
 const activeLink = (index, event) => {
     const navigation = navigations[index];
     
+    // Track analytics for different link types
+    if (typeof window !== 'undefined' && window.gtag) {
+        if (navigation.name === 'Resume') {
+            // Track resume download
+            window.gtag('event', 'file_download', {
+                event_category: 'engagement',
+                event_label: 'resume_download',
+                value: 1
+            });
+        } else {
+            // Track navigation clicks
+            window.gtag('event', 'navigation_click', {
+                event_category: 'engagement',
+                event_label: navigation.name.toLowerCase(),
+                value: 1
+            });
+        }
+    }
+    
     // Handle smooth scrolling for internal links
     if (navigation.href.startsWith('#')) {
         event.preventDefault();

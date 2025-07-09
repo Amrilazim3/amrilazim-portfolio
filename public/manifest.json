@@ -1,0 +1,55 @@
+{
+    "name": "Amril Azim - Full Stack Developer",
+    "short_name": "Amril Azim",
+    "description": "Full Stack Developer specializing in Laravel, Vue.js, and modern web applications. Building scalable solutions with clean code and exceptional user experiences.",
+    "start_url": "/",
+    "display": "standalone",
+    "background_color": "#ffffff",
+    "theme_color": "#3b82f6",
+    "orientation": "portrait-primary",
+    "categories": ["business", "productivity"],
+    "lang": "en",
+    "scope": "/",
+    "icons": [
+        {
+            "src": "/img/logo.png",
+            "sizes": "192x192",
+            "type": "image/png",
+            "purpose": "any maskable"
+        },
+        {
+            "src": "/img/logo.png",
+            "sizes": "512x512",
+            "type": "image/png",
+            "purpose": "any maskable"
+        }
+    ],
+    "shortcuts": [
+        {
+            "name": "Contact",
+            "short_name": "Contact",
+            "description": "Contact Amril Azim",
+            "url": "/#contact",
+            "icons": [
+                {
+                    "src": "/img/logo.png",
+                    "sizes": "96x96"
+                }
+            ]
+        },
+        {
+            "name": "Portfolio",
+            "short_name": "Portfolio",
+            "description": "View portfolio projects",
+            "url": "/#portfolio",
+            "icons": [
+                {
+                    "src": "/img/logo.png",
+                    "sizes": "96x96"
+                }
+            ]
+        }
+    ],
+    "related_applications": [],
+    "prefer_related_applications": false
+} 

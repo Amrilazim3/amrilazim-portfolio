@@ -18,12 +18,31 @@ function cleanForm() {
     form.reset();
     setShowMessage(true);
     setTimeout(() => setShowMessage(false), 2000);
+    
+    // Track contact form submission in Google Analytics
+    if (typeof window !== 'undefined' && window.gtag) {
+        window.gtag('event', 'form_submit', {
+            event_category: 'engagement',
+            event_label: 'contact_form',
+            value: 1
+        });
+    }
 }
 
 const submit = () => {
     form.post(route("contact"), {
         preserveScroll: true,
         onSuccess: () => cleanForm(),
+        onError: () => {
+            // Track form errors
+            if (typeof window !== 'undefined' && window.gtag) {
+                window.gtag('event', 'form_error', {
+                    event_category: 'engagement',
+                    event_label: 'contact_form_error',
+                    value: 1
+                });
+            }
+        }
     });
 };
 </script>

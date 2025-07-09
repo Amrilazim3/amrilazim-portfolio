@@ -9,6 +9,122 @@
     body {
         @apply font-body text-paragraph leading-6 bg-gray-200;
     }
+    
+    /* Performance optimizations */
+    img {
+        max-width: 100%;
+        height: auto;
+        image-rendering: auto;
+        image-rendering: crisp-edges;
+        image-rendering: -webkit-optimize-contrast;
+    }
+    
+    /* Reduce layout shift and improve performance */
+    .section {
+        contain: layout style paint;
+        will-change: auto;
+    }
+    
+    /* Optimize animations and rendering */
+    * {
+        backface-visibility: hidden;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+    }
+    
+    /* Improve scroll performance */
+    html {
+        scroll-behavior: smooth;
+        -webkit-overflow-scrolling: touch;
+    }
+    
+    /* Optimize CSS animations */
+    @media (prefers-reduced-motion: no-preference) {
+        .animate-pulse {
+            animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+        }
+    }
+    
+    /* Disable animations for users who prefer reduced motion */
+    @media (prefers-reduced-motion: reduce) {
+        *, *::before, *::after {
+            animation-duration: 0.01ms !important;
+            animation-iteration-count: 1 !important;
+            transition-duration: 0.01ms !important;
+            scroll-behavior: auto !important;
+        }
+    }
+    
+    /* Critical CSS for above-the-fold content */
+    .hero-section {
+        content-visibility: auto;
+        contain-intrinsic-size: 100vh;
+    }
+    
+    /* Lazy loading improvements */
+    .lazy-load {
+        content-visibility: auto;
+        contain-intrinsic-size: 400px;
+    }
+    
+    /* Lighthouse accessibility improvements */
+    :focus {
+        outline: 2px solid #3b82f6;
+        outline-offset: 2px;
+    }
+    
+    /* High contrast mode support */
+    @media (prefers-contrast: high) {
+        .btn {
+            border: 2px solid currentColor;
+        }
+    }
+    
+    /* Improved color contrast */
+    .text-paragraph {
+        color: #4b5563;
+    }
+    
+    .dark .text-paragraph {
+        color: #d1d5db;
+    }
+    
+    /* Better focus management */
+    .skip-link {
+        position: absolute;
+        top: -40px;
+        left: 6px;
+        background: #000;
+        color: #fff;
+        padding: 8px;
+        text-decoration: none;
+        z-index: 1000;
+    }
+    
+    .skip-link:focus {
+        top: 6px;
+    }
+    
+    /* Lighthouse performance optimizations */
+    .contain-strict {
+        contain: strict;
+    }
+    
+    .contain-layout {
+        contain: layout;
+    }
+    
+    /* Print styles */
+    @media print {
+        .no-print {
+            display: none !important;
+        }
+        
+        body {
+            background: white !important;
+            color: black !important;
+        }
+    }
     h1,
     h2,
     h3,

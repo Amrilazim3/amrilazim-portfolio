@@ -13,7 +13,7 @@ defineProps({
                     v-for="skill in skills.data"
                     :key="skill.id"
                 >
-                    <img :src="skill.image" :alt="skill.name" class="lg:h-20" />
+                    <img :src="skill.image" :alt="`${skill.name} skill`" class="lg:h-20" loading="lazy" />
                 </div>
             </div>
         </div>

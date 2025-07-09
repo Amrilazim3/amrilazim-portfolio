@@ -16,11 +16,12 @@
             }"
         >
             <div class="flex flex-col xl:flex-row gap-24">
-                <img
-                    class="object-cover h-full w-[566px] md:mx-auto lg:mx-0 rounded-2xl"
-                    src="/img/about.jpeg"
-                    alt="about"
-                />
+                                    <img
+                        class="object-cover h-full w-[566px] md:mx-auto lg:mx-0 rounded-2xl"
+                        src="/img/about.jpeg"
+                        alt="Amril Azim - About Me"
+                        loading="lazy"
+                    />
                 <div
                     class="flex flex-col items-center text-center lg:items-start lg:text-left"
                 >
@@ -33,7 +34,7 @@
                         <P class="mb-3 text-accent">Full Stack Developer & Problem Solver</P>
                         <hr class="mb-6 opacity-90 dark:opacity-5" />
                         <p class="mb-6 leading-relaxed">
-                            With over <strong>3+ years</strong> of experience, I specialize in building scalable web applications 
+                            With over <strong>4+ years</strong> of experience, I specialize in building scalable web applications 
                             that solve real business problems. My passion lies in creating digital solutions that not only 
                             look great but perform exceptionally well.
                         </p>
