@@ -25,7 +25,7 @@ class IsAdmin implements Rule
      */
     public function passes($attribute, $value)
     {
-        return $value === 'a.azim0711@gmail.com';
+        return $value === config('auth.admin_email', 'a.azim0711@gmail.com');
     }
 
     /**

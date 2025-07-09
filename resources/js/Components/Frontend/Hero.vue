@@ -88,9 +88,10 @@
                 <div
                     class="flex flex-1 justify-end items-center h-full mt-8 md:mt-0"
                 >
+                    <!-- use from public folder to fetch hero.jpeg -->
                     <img
                         class="rounded-lg"
-                        src="https://amrilazim.com/img/hero.jpeg"
+                        src="/img/hero.jpeg"
                         alt="Hero"
                     />
                 </div>

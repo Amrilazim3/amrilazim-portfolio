@@ -33,12 +33,12 @@
                         <P class="mb-4 text-accent">Full Stack Developer</P>
                         <hr class="mb-8 opacity-90 dark:opacity-5" />
                         <p class="mb-8">
-                            Work on all layers of a software application, from
+                            As a full-stack developer, I work on all layers of a software application, from
                             the user interface (UI) and front-end logic to the
                             back-end services and database. <br />
                             <br />
                             On the front-end, I am skilled in HTML, CSS, and
-                            JavaScript, Typescript for native Language as well
+                            JavaScript, TypeScript for native languages as well
                             as modern frameworks such as Vue.js. I have a strong
                             understanding of user experience (UX) and am able to
                             create intuitive and responsive designs that meet
@@ -46,7 +46,7 @@
                             <br />
                             On the back-end, I am proficient in languages such
                             as PHP, C, C++, as well as databases and server-side
-                            frameworks like Laravel, MySql, and Redis. I am
+                            frameworks like Laravel, MySQL, and Redis. I am
                             comfortable working with APIs and microservices, and
                             have experience with deployment and server
                             management using tools such as Docker on nginx

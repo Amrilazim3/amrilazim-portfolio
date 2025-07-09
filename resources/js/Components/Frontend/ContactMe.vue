@@ -45,7 +45,7 @@ const submit = () => {
             <div class="flex flex-col items-center text-center">
                 <h2 class="section-title">Contact Me</h2>
                 <p class="subtitle">
-                    If you interest with me, feel free to send me an email or message.
+                    If you are interested in working with me, feel free to send me an email or message.
                 </p>
             </div>
             <div class="flex flex-col lg:flex-row lg:gap-x-8">
@@ -76,7 +76,7 @@ const submit = () => {
                                 Have a question?
                             </h4>
                             <p class="text-accent font-normal">
-                                Email me at a.azim0711@gmail.
+                                Email me at a.azim0711@gmail.com
                             </p>
                         </div>
                     </div>
@@ -84,57 +84,130 @@ const submit = () => {
                 <form
                     @submit.prevent="submit"
                     class="space-y-8 w-full max-w-md"
+                    role="form"
+                    aria-label="Contact form"
                 >
                     <div
                         v-if="showMessage"
-                        class="m-2 p-4 bg-light-tail-500 dark:bg-dark-navy-100 text-light-secondary rounded-lg"
+                        class="m-2 p-4 bg-green-500 text-white rounded-lg shadow-lg transform transition-all duration-300 ease-in-out"
+                        v-motion
+                        :initial="{ opacity: 0, y: -20 }"
+                        :enter="{ opacity: 1, y: 0 }"
                     >
-                        Thank you for contacting me.
+                        <div class="flex items-center">
+                            <svg class="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+                            </svg>
+                            Thank you for contacting me! I'll get back to you soon.
+                        </div>
                     </div>
                     <div class="flex gap-8">
                         <div>
+                            <label for="contact-name" class="sr-only">Your Name</label>
                             <input
+                                id="contact-name"
                                 v-model="form.name"
                                 type="text"
-                                class="input"
+                                class="input transition-all duration-200"
+                                :class="{ 'border-red-500 border-2 bg-red-50 dark:bg-red-900/20': form.errors.name }"
                                 placeholder="Your Name"
+                                aria-required="true"
+                                :aria-invalid="!!form.errors.name"
+                                :aria-describedby="form.errors.name ? 'name-error' : null"
                             />
-                            <span
+                            <div
                                 v-if="form.errors.name"
-                                class="text-sm m-2 text-red-400"
-                                >{{ form.errors.name }}</span
+                                id="name-error"
+                                class="mt-2 p-2 bg-red-100 dark:bg-red-900/30 border border-red-300 dark:border-red-700 rounded-md"
+                                v-motion
+                                :initial="{ opacity: 0, y: -10 }"
+                                :enter="{ opacity: 1, y: 0 }"
+                                role="alert"
+                                aria-live="polite"
                             >
+                                <div class="flex items-center text-red-600 dark:text-red-400 text-sm">
+                                    <svg class="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 20 20">
+                                        <path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7 4a1 1 0 11-2 0 1 1 0 012 0zm-1-9a1 1 0 00-1 1v4a1 1 0 102 0V6a1 1 0 00-1-1z" clip-rule="evenodd"></path>
+                                    </svg>
+                                    {{ form.errors.name }}
+                                </div>
+                            </div>
                         </div>
                         <div>
+                            <label for="contact-email" class="sr-only">Your Email</label>
                             <input
+                                id="contact-email"
                                 v-model="form.email"
                                 type="email"
-                                class="input"
+                                class="input transition-all duration-200"
+                                :class="{ 'border-red-500 border-2 bg-red-50 dark:bg-red-900/20': form.errors.email }"
                                 placeholder="Your Email"
+                                aria-required="true"
+                                :aria-invalid="!!form.errors.email"
+                                :aria-describedby="form.errors.email ? 'email-error' : null"
                             />
-                            <span
+                            <div
                                 v-if="form.errors.email"
-                                class="text-sm m-2 text-red-400"
-                                >{{ form.errors.email }}</span
+                                id="email-error"
+                                class="mt-2 p-2 bg-red-100 dark:bg-red-900/30 border border-red-300 dark:border-red-700 rounded-md"
+                                v-motion
+                                :initial="{ opacity: 0, y: -10 }"
+                                :enter="{ opacity: 1, y: 0 }"
+                                role="alert"
+                                aria-live="polite"
                             >
+                                <div class="flex items-center text-red-600 dark:text-red-400 text-sm">
+                                    <svg class="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 20 20">
+                                        <path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7 4a1 1 0 11-2 0 1 1 0 012 0zm-1-9a1 1 0 00-1 1v4a1 1 0 102 0V6a1 1 0 00-1-1z" clip-rule="evenodd"></path>
+                                    </svg>
+                                    {{ form.errors.email }}
+                                </div>
+                            </div>
                         </div>
                     </div>
+                    <label for="contact-message" class="sr-only">Your Message</label>
                     <textarea
+                        id="contact-message"
                         v-model="form.body"
-                        class="textarea"
-                        placeholder="Your Meassage"
+                        class="textarea transition-all duration-200"
+                        :class="{ 'border-red-500 border-2 bg-red-50 dark:bg-red-900/20': form.errors.body }"
+                        placeholder="Your Message"
                         spellcheck="false"
+                        aria-required="true"
+                        :aria-invalid="!!form.errors.body"
+                        :aria-describedby="form.errors.body ? 'message-error' : null"
                     ></textarea>
-                    <span
+                    <div
                         v-if="form.errors.body"
-                        class="text-sm m-2 text-red-400"
-                        >{{ form.errors.body }}</span
+                        id="message-error"
+                        class="mt-2 p-2 bg-red-100 dark:bg-red-900/30 border border-red-300 dark:border-red-700 rounded-md"
+                        v-motion
+                        :initial="{ opacity: 0, y: -10 }"
+                        :enter="{ opacity: 1, y: 0 }"
+                        role="alert"
+                        aria-live="polite"
                     >
+                        <div class="flex items-center text-red-600 dark:text-red-400 text-sm">
+                            <svg class="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7 4a1 1 0 11-2 0 1 1 0 012 0zm-1-9a1 1 0 00-1 1v4a1 1 0 102 0V6a1 1 0 00-1-1z" clip-rule="evenodd"></path>
+                            </svg>
+                            {{ form.errors.body }}
+                        </div>
+                    </div>
 
                     <button
-                        class="btn btn-lg bg-accent hover:bg-secondary text-white"
+                        class="btn btn-lg bg-accent hover:bg-secondary text-white transition-all duration-200"
+                        :disabled="form.processing"
+                        :class="{ 'opacity-50 cursor-not-allowed': form.processing }"
                     >
-                        Send message
+                        <span v-if="form.processing" class="flex items-center">
+                            <svg class="animate-spin -ml-1 mr-3 h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                                <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+                                <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                            </svg>
+                            Sending...
+                        </span>
+                        <span v-else>Send message</span>
                     </button>
                 </form>
             </div>

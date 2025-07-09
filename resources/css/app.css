@@ -3,6 +3,9 @@
 @tailwind utilities;
 
 @layer base {
+    html {
+        scroll-behavior: smooth;
+    }
     body {
         @apply font-body text-paragraph leading-6 bg-gray-200;
     }

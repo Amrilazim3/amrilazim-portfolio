@@ -108,4 +108,17 @@ return [
 
     'password_timeout' => 10800,
 
+    /*
+    |--------------------------------------------------------------------------
+    | Admin Email
+    |--------------------------------------------------------------------------
+    |
+    | This email address is used to restrict admin registration to specific
+    | email addresses. This adds an extra layer of security to prevent
+    | unauthorized users from registering as administrators.
+    |
+    */
+
+    'admin_email' => env('ADMIN_EMAIL', 'a.azim0711@gmail.com'),
+
 ];

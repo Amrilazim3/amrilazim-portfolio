@@ -25,7 +25,7 @@ defineProps({
             <div class="flex flex-col items-center text-center">
                 <h2 class="section-title">My Projects!</h2>
                 <p class="subtitle">
-                    Laravel is current favourite framework to work with any
+                    Laravel is my current favorite framework to work with any
                     projects because it can do everything from front to the back
                     end side.
                 </p>

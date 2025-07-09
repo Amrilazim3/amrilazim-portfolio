@@ -1,6 +1,6 @@
-<scrip setup>
+<script setup>
 
-</scrip>
+</script>
 <template>
     <section
         id="services"
@@ -21,8 +21,8 @@
             <div class="flex flex-col items-center text-center">
                 <h2 class="section-title">What I do for clients</h2>
                 <p class="subtitle">
-                    Create a full web application with entire scalfolding of
-                    front-end, back-end, deployment, and maintanence.
+                    Create a full web application with entire scaffolding of
+                    front-end, back-end, deployment, and maintenance.
                 </p>
             </div>
             <div class="grid lg:grid-cols-4 gap-8">
