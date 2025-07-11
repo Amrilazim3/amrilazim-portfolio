@@ -1,8 +1,9 @@
 <script setup>
-import { ref, onMounted, reactive } from "vue";
+import { ref, onMounted, reactive, onUnmounted } from "vue";
 import { Link } from '@inertiajs/inertia-vue3'
 const showMobileMenu = ref(false);
 const scrollBg = ref(false);
+const currentSection = ref('home');
 
 const navigations = reactive([
     { name: "Home", href: "#home", active: true },
@@ -17,6 +18,31 @@ const navigations = reactive([
 
 const setScrollBg = (value) => {
     scrollBg.value = value;
+};
+
+const updateActiveSection = () => {
+    const sections = ['home', 'about', 'portfolio', 'services', 'certifications', 'contact'];
+    const scrollPosition = window.scrollY + 100; // Offset to trigger earlier
+    
+    for (let i = sections.length - 1; i >= 0; i--) {
+        const section = document.getElementById(sections[i]);
+        if (section && scrollPosition >= section.offsetTop) {
+            currentSection.value = sections[i];
+            
+            // Update navigation active states based on current section
+            navigations.forEach((nav, index) => {
+                const sectionName = nav.href.replace('#', '');
+                if (sectionName === 'certifications' && currentSection.value === 'certifications') {
+                    nav.active = nav.name === 'Learning';
+                } else if (sectionName === currentSection.value) {
+                    nav.active = true;
+                } else if (nav.name !== 'Resume') {
+                    nav.active = false;
+                }
+            });
+            break;
+        }
+    }
 };
 
 const activeLink = (index, event) => {
@@ -55,21 +81,26 @@ const activeLink = (index, event) => {
     
     // Close mobile menu after clicking
     showMobileMenu.value = false;
-    
-    // Update active state
-    navigations.forEach((link, key) => {
-        if (key === index) {
-            link.active = true;
-        } else {
-            link.active = false;
-        }
-    });
 };
 
+let scrollHandler;
+
 onMounted(() => {
-    window.addEventListener("scroll", () => {
-        return window.scrollY > 50 ? setScrollBg(true) : setScrollBg(false);
-    });
+    scrollHandler = () => {
+        const scrollY = window.scrollY;
+        setScrollBg(scrollY > 50);
+        updateActiveSection();
+    };
+    
+    window.addEventListener("scroll", scrollHandler);
+    // Initial call to set correct active section
+    updateActiveSection();
+});
+
+onUnmounted(() => {
+    if (scrollHandler) {
+        window.removeEventListener("scroll", scrollHandler);
+    }
 });
 </script>
 <template>
@@ -134,15 +165,29 @@ onMounted(() => {
                         <a
                             @click="activeLink(index, $event)"
                             :href="navigation.href"
-                            class="block py-2 pr-4 pl-3 rounded transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-accent"
-                            :class="
+                            class="block py-2 pr-4 pl-3 rounded transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-accent"
+                            :class="[
                                 navigation.active
-                                    ? 'text-light-tail-100 dark:text-white bg-accent/20'
-                                    : 'text-light-tail-500 dark:text-dark-navy-100 hover:text-light-tail-100 dark:hover:text-white hover:bg-accent/10'
-                            "
+                                    ? navigation.name === 'Contact' 
+                                        ? 'text-white bg-accent shadow-lg scale-105 ring-2 ring-accent/50' 
+                                        : 'text-light-tail-100 dark:text-white bg-accent/20'
+                                    : 'text-light-tail-500 dark:text-dark-navy-100 hover:text-light-tail-100 dark:hover:text-white hover:bg-accent/10',
+                                navigation.name === 'Contact' && navigation.active ? 'font-semibold' : ''
+                            ]"
                             :aria-current="navigation.active ? 'page' : null"
-                            >{{ navigation.name }}</a
                         >
+                            <span class="flex items-center">
+                                {{ navigation.name }}
+                                <svg 
+                                    v-if="navigation.name === 'Contact' && navigation.active" 
+                                    class="ml-2 w-4 h-4 animate-pulse" 
+                                    fill="currentColor" 
+                                    viewBox="0 0 20 20"
+                                >
+                                    <path fill-rule="evenodd" d="M18 10c0 3.866-3.582 7-8 7a8.841 8.841 0 01-4.083-.98L2 17l1.338-3.123C2.493 12.767 2 11.434 2 10c0-3.866 3.582-7 8-7s8 3.134 8 7zM7 9H5v2h2V9zm8 0h-2v2h2V9zM9 9h2v2H9V9z" clip-rule="evenodd" />
+                                </svg>
+                            </span>
+                        </a>
                     </li>
                 </ul>
             </div>
