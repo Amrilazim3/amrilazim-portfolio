@@ -10,7 +10,6 @@ use App\Models\Project;
 use App\Models\Skill;
 use Illuminate\Http\Request;
 use Inertia\Inertia;
-use Symfony\Component\VarDumper\VarDumper;
 
 class WelcomeController extends Controller
 {

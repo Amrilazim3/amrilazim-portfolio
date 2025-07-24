@@ -1,10 +1,6 @@
 <script setup>
-// Remove the hardcoded default data and use props from the controller
 defineProps({
-    certifications: {
-        type: Array,
-        default: () => []
-    }
+    certifications: Object
 });
 </script>
 
@@ -27,9 +23,9 @@ defineProps({
                 </p>
             </div>
 
-            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mb-12" v-if="certifications.length > 0">
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mb-12" v-if="certifications.data.length > 0">
                 <div
-                    v-for="(certification, index) in certifications"
+                    v-for="(certification, index) in certifications.data"
                     :key="certification.id"
                     class="bg-white dark:bg-dark-navy-500 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 p-6"
                     v-motion
@@ -147,7 +143,7 @@ defineProps({
                     </p>
                     <div class="grid md:grid-cols-3 gap-6 mt-6">
                         <div class="text-center">
-                            <div class="text-3xl font-bold text-accent mb-2">{{ certifications.length }}+</div>
+                            <div class="text-3xl font-bold text-accent mb-2">{{ certifications.data.length }}+</div>
                             <div class="text-sm text-gray-600 dark:text-gray-400">Completed Courses</div>
                         </div>
                         <div class="text-center">
