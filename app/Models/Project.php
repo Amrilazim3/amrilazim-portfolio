@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\Storage;
 
 class Project extends Model
 {
@@ -32,6 +33,12 @@ class Project extends Model
         'features' => 'array',
         'is_featured' => 'boolean',
     ];
+
+    // Accessor for image URL
+    public function getImageUrlAttribute()
+    {
+        return $this->image ? asset('storage/' . $this->image) : null;
+    }
 
     public function skill()
     {

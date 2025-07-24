@@ -60,7 +60,9 @@ class ProjectResource extends Resource
                             ->visibility('public')
                             ->imageEditor()
                             ->required()
-                            ->helperText('Upload a screenshot or preview image'),
+                            ->helperText('Upload a screenshot or preview image')
+                            ->downloadable()
+                            ->openable(),
                     ])
                     ->columns(2),
 
@@ -145,7 +147,8 @@ class ProjectResource extends Resource
                     ->label('Screenshot')
                     ->disk('public')
                     ->width(60)
-                    ->height(40),
+                    ->height(40)
+                    ->url(fn ($record) => $record->image_url),
                 
                 Tables\Columns\TextColumn::make('name')
                     ->searchable()

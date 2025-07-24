@@ -43,7 +43,9 @@ class SkillResource extends Resource
                     ->imageResizeTargetWidth('200')
                     ->imageResizeTargetHeight('200')
                     ->required()
-                    ->helperText('Upload a square image (recommended: 200x200px)'),
+                    ->helperText('Upload a square image (recommended: 200x200px)')
+                    ->downloadable()
+                    ->openable(),
             ]);
     }
 
@@ -55,7 +57,8 @@ class SkillResource extends Resource
                     ->label('Icon')
                     ->disk('public')
                     ->width(50)
-                    ->height(50),
+                    ->height(50)
+                    ->url(fn ($record) => $record->image_url),
                 
                 Tables\Columns\TextColumn::make('name')
                     ->searchable()
