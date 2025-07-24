@@ -10,7 +10,7 @@ const generateStructuredData = () => {
         "jobTitle": "Full Stack Developer",
         "description": "Full Stack Developer specializing in Laravel, Vue.js, and modern web applications. Building scalable solutions with clean code and exceptional user experiences.",
         "url": window.location.origin,
-        "image": `${window.location.origin}/img/hero.jpeg`,
+        "image": `${window.location.origin}/img/hero-mh3f1u.jpeg`,
         "sameAs": [
             "https://github.com/amrilazim",
             "https://linkedin.com/in/amrilazim"

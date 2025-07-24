@@ -106,7 +106,7 @@ const trackSocialClick = (platform) => {
                     <!-- use from public folder to fetch hero.jpeg -->
                     <img
                         class="rounded-lg"
-                        src="/img/hero.jpeg"
+                        src="/img/hero-mh3f1u.jpeg"
                         alt="Amril Azim - Full Stack Developer"
                         loading="eager"
                         fetchpriority="high"

@@ -16,7 +16,7 @@
     <meta property="og:url" content="{{ url()->current() }}">
     <meta property="og:title" content="Amril Azim - Full Stack Developer">
     <meta property="og:description" content="Full Stack Developer specializing in Laravel, Vue.js, and modern web applications. Building scalable solutions with clean code and exceptional user experiences.">
-    <meta property="og:image" content="{{ asset('img/hero.jpeg') }}">
+    <meta property="og:image" content="{{ asset('img/hero-mh3f1u.jpeg') }}">
     <meta property="og:site_name" content="Amril Azim Portfolio">
     
     <!-- Twitter -->
@@ -24,7 +24,7 @@
     <meta property="twitter:url" content="{{ url()->current() }}">
     <meta property="twitter:title" content="Amril Azim - Full Stack Developer">
     <meta property="twitter:description" content="Full Stack Developer specializing in Laravel, Vue.js, and modern web applications.">
-    <meta property="twitter:image" content="{{ asset('img/hero.jpeg') }}">
+    <meta property="twitter:image" content="{{ asset('img/hero-mh3f1u.jpeg') }}">
     
     <!-- Performance optimizations -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -32,7 +32,7 @@
     <link rel="dns-prefetch" href="//www.google-analytics.com">
     
     <!-- Preload critical resources -->
-    <link rel="preload" href="{{ asset('img/hero.jpeg') }}" as="image" type="image/jpeg" fetchpriority="high">
+    <link rel="preload" href="{{ asset('img/hero-mh3f1u.jpeg') }}" as="image" type="image/jpeg" fetchpriority="high">
     <link rel="preload" href="{{ asset('css/app.css') }}" as="style">
     <link rel="preload" href="{{ asset('js/app.js') }}" as="script">
     
