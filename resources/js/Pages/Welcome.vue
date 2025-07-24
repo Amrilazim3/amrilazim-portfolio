@@ -14,6 +14,7 @@ import ContactMe from "../Components/Frontend/ContactMe.vue";
 defineProps({
     skills: Object,
     projects: Object,
+    certifications: Object,
 });
 </script>
 
@@ -33,7 +34,7 @@ defineProps({
         <!-- Testimonials primary -->
         <!-- <Testimonials /> -->
         <!-- Continuous Learning secondary -->
-        <Certifications />
+        <Certifications :certifications="certifications" />
         <!-- Contact primary -->
         <ContactMe />
     </FrontendLayout>

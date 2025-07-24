@@ -1,87 +1,9 @@
 <script setup>
+// Remove the hardcoded default data and use props from the controller
 defineProps({
-    courses: {
+    certifications: {
         type: Array,
-        default: () => [
-            {
-                id: 1,
-                title: "Laravel 8 From Scratch",
-                platform: "Laracasts",
-                instructor: "Jeffrey Way",
-                date: "2021",
-                image: "https://laracasts.com/images/series/2018/laravel-from-scratch-2021.svg",
-                description: "Master Laravel fundamentals including Eloquent ORM, authentication, authorization, and building blog post web application",
-                skills: ["Laravel 8", "PHP 7.4", "Eloquent ORM", "Blade Templates", "Authentication", "MVC"],
-                duration: "1 week",
-                status: "Completed",
-                courseUrl: "https://laracasts.com/series/laravel-8-from-scratch"
-            },
-            {
-                id: 2,
-                title: "Vue 3 + Inertia",
-                platform: "Laracasts",
-                instructor: "Jeffrey Way",
-                date: "2022",
-                image: "https://laracasts.com/images/series/2021/vue-3-inertia.svg",
-                description: "Build modern single-page applications with Vue 3, Inertia.js, and Laravel for seamless full-stack development",
-                skills: ["Vue 3", "Inertia.js", "Composition API", "Laravel Integration", "SPA", "Tailwind CSS"],
-                duration: "1 week",
-                status: "Completed",
-                courseUrl: "https://laracasts.com/series/build-modern-laravel-apps-using-inertia-js"
-            },
-            {
-                id: 3,
-                title: "React From Scratch",
-                platform: "Laracasts",
-                instructor: "Simon Vrachliotis",
-                date: "2022",
-                image: "https://laracasts.com/images/series/2020/react-inertia.svg",
-                description: "Learn React fundamentals and integrate with Laravel using Inertia.js for powerful full-stack applications",
-                skills: ["React", "JSX", "Hooks"],
-                duration: "< 1 week",
-                status: "Completed",
-                courseUrl: "https://laracasts.com/series/react-from-scratch"
-            },
-            {
-                id: 4,
-                title: "MySQL Database Design",
-                platform: "Laracasts",
-                instructor: "Jeffrey Way",
-                date: "2023",
-                image: "https://laracasts.com/images/series/2017/mysql-database-design.svg",
-                description: "Master database design principles, normalization, relationships, and optimization for scalable applications",
-                skills: ["MySQL", "Database Design", "Normalization", "Relationships", "Optimization"],
-                duration: "1 day",
-                status: "Completed",
-                courseUrl: "https://laracasts.com/series/mysql-database-design"
-            },
-            {
-                id: 5,
-                title: "Laravel 9",
-                platform: "Laracasts",
-                instructor: "Jeffrey Way",
-                date: "2023",
-                image: "https://laracasts.com/images/series/2019/laravel-testing.svg",
-                description: "Comprehensive testing strategies for Laravel applications including unit tests, feature tests, and TDD practices",
-                skills: ["Laravel 9", "PHP 8"],
-                duration: "< 1 day",
-                status: "Completed",
-                courseUrl: "https://laracasts.com/series/whats-new-in-laravel-9"
-            },
-            {
-                id: 6,
-                title: "Laravel 10",
-                platform: "Laracasts",
-                instructor: "Jeffrey Way",
-                date: "2023",
-                image: "https://laracasts.com/images/series/2018/advanced-laravel.svg",
-                description: "Advanced Laravel concepts including service containers, facades, middleware, and custom packages",
-                skills: ["Laravel 10", "PHP 8"],
-                duration: "< 1 day",
-                status: "Completed",
-                courseUrl: "https://laracasts.com/series/whats-new-in-laravel-10"
-            }
-        ]
+        default: () => []
     }
 });
 </script>
@@ -105,10 +27,10 @@ defineProps({
                 </p>
             </div>
 
-            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mb-12" v-if="certifications.length > 0">
                 <div
-                    v-for="(course, index) in courses"
-                    :key="course.id"
+                    v-for="(certification, index) in certifications"
+                    :key="certification.id"
                     class="bg-white dark:bg-dark-navy-500 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 p-6"
                     v-motion
                     :initial="{ opacity: 0, y: 50 }"
@@ -127,23 +49,23 @@ defineProps({
                                 </svg>
                             </div>
                             <div>
-                                <h3 class="font-bold text-lg text-gray-900 dark:text-white">{{ course.title }}</h3>
-                                <p class="text-accent text-sm font-medium">{{ course.platform }}</p>
+                                <h3 class="font-bold text-lg text-gray-900 dark:text-white">{{ certification.title }}</h3>
+                                <p class="text-accent text-sm font-medium">{{ certification.platform }}</p>
                             </div>
                         </div>
                         <span class="bg-green-100 dark:bg-green-900 text-green-800 dark:text-green-200 px-2 py-1 rounded-full text-xs font-medium">
-                            {{ course.status }}
+                            {{ certification.status.charAt(0).toUpperCase() + certification.status.slice(1) }}
                         </span>
                     </div>
 
                     <!-- Instructor -->
                     <p class="text-gray-500 dark:text-gray-400 text-sm mb-3">
-                        <span class="font-medium">Instructor:</span> {{ course.instructor }}
+                        <span class="font-medium">Instructor:</span> {{ certification.instructor }}
                     </p>
 
                     <!-- Description -->
                     <p class="text-gray-600 dark:text-gray-300 text-sm mb-4 leading-relaxed">
-                        {{ course.description }}
+                        {{ certification.description }}
                     </p>
 
                     <!-- Skills -->
@@ -151,7 +73,7 @@ defineProps({
                         <h4 class="text-sm font-semibold text-gray-900 dark:text-white mb-2">Skills Covered:</h4>
                         <div class="flex flex-wrap gap-2">
                             <span
-                                v-for="skill in course.skills"
+                                v-for="skill in certification.skills"
                                 :key="skill"
                                 class="bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200 px-2 py-1 rounded text-xs"
                             >
@@ -166,15 +88,16 @@ defineProps({
                             <div class="flex items-center space-x-4">
                                 <div>
                                     <p class="text-xs text-gray-500 dark:text-gray-400">Duration</p>
-                                    <p class="text-sm font-medium text-gray-700 dark:text-gray-300">{{ course.duration }}</p>
+                                    <p class="text-sm font-medium text-gray-700 dark:text-gray-300">{{ certification.duration }}</p>
                                 </div>
                                 <div>
                                     <p class="text-xs text-gray-500 dark:text-gray-400">Completed</p>
-                                    <p class="text-sm font-medium text-gray-700 dark:text-gray-300">{{ course.date }}</p>
+                                    <p class="text-sm font-medium text-gray-700 dark:text-gray-300">{{ certification.date }}</p>
                                 </div>
                             </div>
                             <a
-                                :href="course.courseUrl"
+                                v-if="certification.courseUrl"
+                                :href="certification.courseUrl"
                                 target="_blank"
                                 rel="noopener noreferrer"
                                 class="text-accent hover:text-accent-hover text-sm font-medium flex items-center"
@@ -187,6 +110,23 @@ defineProps({
                         </div>
                     </div>
                 </div>
+            </div>
+
+            <!-- Empty State -->
+            <div 
+                v-else
+                class="text-center py-12"
+                v-motion
+                :initial="{ opacity: 0, y: 50 }"
+                :visible="{ opacity: 1, y: 0 }"
+            >
+                <div class="w-16 h-16 bg-gray-100 dark:bg-gray-700 rounded-full flex items-center justify-center mx-auto mb-4">
+                    <svg class="w-8 h-8 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.746 0 3.332.477 4.5 1.253v13C19.832 18.477 18.246 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
+                    </svg>
+                </div>
+                <h3 class="text-xl font-semibold text-gray-900 dark:text-white mb-2">No Certifications Yet</h3>
+                <p class="text-gray-600 dark:text-gray-300">Check back soon for new certifications and learning achievements!</p>
             </div>
 
             <!-- Learning Philosophy -->
@@ -207,8 +147,8 @@ defineProps({
                     </p>
                     <div class="grid md:grid-cols-3 gap-6 mt-6">
                         <div class="text-center">
-                            <div class="text-3xl font-bold text-accent mb-2">6+</div>
-                            <div class="text-sm text-gray-600 dark:text-gray-400">Laracasts Courses</div>
+                            <div class="text-3xl font-bold text-accent mb-2">{{ certifications.length }}+</div>
+                            <div class="text-sm text-gray-600 dark:text-gray-400">Completed Courses</div>
                         </div>
                         <div class="text-center">
                             <div class="text-3xl font-bold text-accent mb-2">100+</div>

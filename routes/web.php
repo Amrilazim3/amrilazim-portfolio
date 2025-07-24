@@ -28,13 +28,6 @@ Route::get('/sitemap.xml', function () {
     ]);
 });
 
-Route::middleware(['auth', 'verified'])->group(function () {
-    Route::get('/dashboard', function () {
-        return Inertia::render('Dashboard');
-    })->name('dashboard');
-
-    Route::resource('/skills', SkillController::class);
-    Route::resource('/projects', ProjectController::class);
-});
+// Admin routes are now handled by FilamentPHP at /admin
 
 require __DIR__ . '/auth.php';
