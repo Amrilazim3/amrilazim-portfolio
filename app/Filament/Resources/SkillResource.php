@@ -42,10 +42,19 @@ class SkillResource extends Resource
                     ->imageCropAspectRatio('1:1')
                     ->imageResizeTargetWidth('200')
                     ->imageResizeTargetHeight('200')
+                    ->imageResizeMode('cover')
                     ->required()
-                    ->helperText('Upload a square image (recommended: 200x200px)')
+                    ->helperText('Upload a square image (recommended: 200x200px). You can edit the image after upload.')
                     ->downloadable()
-                    ->openable(),
+                    ->openable()
+                    ->acceptedFileTypes(['image/jpeg', 'image/png', 'image/webp'])
+                    ->maxSize(2048)
+                    ->afterStateUpdated(function ($state, $set) {
+                        // This will be called after the image is uploaded
+                        if ($state) {
+                            // The image will be processed by Filament's built-in processor
+                        }
+                    }),
             ]);
     }
 
