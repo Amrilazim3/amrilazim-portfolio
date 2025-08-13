@@ -1,6 +1,19 @@
 <script setup>
-import { ref } from "vue";
+import { ref, computed } from "vue";
 import { useForm } from "@inertiajs/inertia-vue3";
+
+const props = defineProps({
+    contactData: {
+        type: Object,
+        default: () => ({})
+    }
+});
+
+// Computed properties with fallbacks
+const title = computed(() => props.contactData?.title || 'Contact Me');
+const subtitle = computed(() => props.contactData?.subtitle || 'If you are interested in working with me...');
+const email = computed(() => props.contactData?.email || 'a.azim0711@gmail.com');
+const description = computed(() => props.contactData?.description || 'Have a question?');
 
 const showMessage = ref(false);
 
@@ -62,10 +75,8 @@ const submit = () => {
             }"
         >
             <div class="flex flex-col items-center text-center">
-                <h2 class="section-title">Contact Me</h2>
-                <p class="subtitle">
-                    If you are interested in working with me, feel free to send me an email or message.
-                </p>
+                <h2 class="section-title">{{ title }}</h2>
+                <p class="subtitle">{{ subtitle }}</p>
             </div>
             <div class="flex flex-col lg:flex-row lg:gap-x-8">
                 <div
@@ -92,10 +103,10 @@ const submit = () => {
                         </div>
                         <div>
                             <h4 class="font-body text-xl mb-1">
-                                Have a question?
+                                {{ description }}
                             </h4>
                             <p class="text-accent font-normal">
-                                Email me at a.azim0711@gmail.com
+                                Email me at {{ email }}
                             </p>
                         </div>
                     </div>

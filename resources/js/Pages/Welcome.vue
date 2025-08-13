@@ -15,6 +15,11 @@ defineProps({
     skills: Object,
     projects: Object,
     certifications: Object,
+    heroData: Object,
+    aboutData: Object,
+    contactData: Object,
+    servicesData: Object,
+    socialLinks: Array,
 });
 </script>
 
@@ -22,20 +27,20 @@ defineProps({
     <Head title="Welcome Page" />
     <FrontendLayout>
         <!-- Hero primary -->
-        <Hero />
+        <Hero :hero-data="heroData" :social-links="socialLinks" />
         <!-- About secondary -->
-        <About />
+        <About :about-data="aboutData" />
         <!-- Skills tail-100 -->
         <Skills :skills="skills" />
         <!-- Portfolio primary -->
         <Portfolio :skills="skills" :projects="projects" />
         <!-- Services secondary -->
-        <Services />
+        <Services :services-data="servicesData" />
         <!-- Testimonials primary -->
         <!-- <Testimonials /> -->
         <!-- Continuous Learning secondary -->
         <Certifications :certifications="certifications" />
         <!-- Contact primary -->
-        <ContactMe />
+        <ContactMe :contact-data="contactData" />
     </FrontendLayout>
 </template>

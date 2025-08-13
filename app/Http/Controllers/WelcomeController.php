@@ -2,23 +2,35 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Resources\CertificationResource;
-use App\Http\Resources\ProjectResource;
-use App\Http\Resources\SkillResource;
 use App\Models\Certification;
 use App\Models\Project;
+use App\Models\Service;
 use App\Models\Skill;
+use App\Models\SocialLink;
+use App\Services\SiteSettingService;
 use Illuminate\Http\Request;
 use Inertia\Inertia;
+use Inertia\Response;
 
 class WelcomeController extends Controller
 {
-    public function welcome()
+    public function index(): Response
     {
-        $skills = SkillResource::collection(Skill::all());
-        $projects = ProjectResource::collection(Project::with('skill')->get());
-        $certifications = CertificationResource::collection(Certification::completed()->get());
-
-        return Inertia::render('Welcome', compact('skills', 'projects', 'certifications'));
+        return Inertia::render('Welcome', [
+            // Existing data
+            'skills' => Skill::all(),
+            'projects' => Project::with('skill')->get(),
+            'certifications' => Certification::all(),
+            
+            // New dynamic content
+            'heroData' => SiteSettingService::getHeroSettings(),
+            'aboutData' => SiteSettingService::getAboutSettings(),
+            'contactData' => SiteSettingService::getContactSettings(),
+            'servicesData' => [
+                'settings' => SiteSettingService::getServicesSettings(),
+                'services' => Service::active()->ordered()->get(),
+            ],
+            'socialLinks' => SocialLink::active()->ordered()->get(),
+        ]);
     }
 }

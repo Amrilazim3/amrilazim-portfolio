@@ -1,3 +1,24 @@
+<script setup>
+import { computed } from 'vue';
+
+const props = defineProps({
+    aboutData: {
+        type: Object,
+        default: () => ({})
+    }
+});
+
+// Computed properties with fallbacks
+const title = computed(() => props.aboutData?.title || 'Turning Ideas Into Reality');
+const subtitle = computed(() => props.aboutData?.subtitle || 'Full Stack Developer & Problem Solver');
+const description = computed(() => props.aboutData?.description || 'With over 4+ years of experience...');
+const approachText = computed(() => props.aboutData?.approach_text || 'I believe in writing clean, maintainable code...');
+const aboutImage = computed(() => props.aboutData?.image || '/img/about.jpeg');
+const frontendSkills = computed(() => props.aboutData?.frontend_skills || ['Vue.js', 'JavaScript/TypeScript', 'Tailwind CSS', 'Responsive Design']);
+const backendSkills = computed(() => props.aboutData?.backend_skills || ['Laravel (PHP)', 'MySQL', 'Redis', 'RESTful APIs']);
+const devopsSkills = computed(() => props.aboutData?.devops_skills || ['Docker', 'Linux Server Management', 'Git', 'CI/CD']);
+</script>
+
 <template>
     <section
         id="about"
@@ -16,12 +37,12 @@
             }"
         >
             <div class="flex flex-col xl:flex-row gap-24">
-                                    <img
-                        class="object-cover h-full w-[566px] md:mx-auto lg:mx-0 rounded-2xl"
-                        src="/img/about.jpeg"
-                        alt="Amril Azim - About Me"
-                        loading="lazy"
-                    />
+                <img
+                    class="object-cover h-full w-[566px] md:mx-auto lg:mx-0 rounded-2xl"
+                    :src="aboutImage"
+                    :alt="`${title} - About Me`"
+                    loading="lazy"
+                />
                 <div
                     class="flex flex-col items-center text-center lg:items-start lg:text-left"
                 >
@@ -29,38 +50,31 @@
                         <h2
                             class="text-3xl lg:text-4xl font-medium lg:font-extrabold mb-4"
                         >
-                            Turning Ideas Into Reality
+                            {{ title }}
                         </h2>
-                        <P class="mb-3 text-accent">Full Stack Developer & Problem Solver</P>
+                        <p class="mb-3 text-accent">{{ subtitle }}</p>
                         <hr class="mb-6 opacity-90 dark:opacity-5" />
-                        <p class="mb-6 leading-relaxed">
-                            With over <strong>4+ years</strong> of experience, I specialize in building scalable web applications 
-                            that solve real business problems. My passion lies in creating digital solutions that not only 
-                            look great but perform exceptionally well.
-                        </p>
+                        <p class="mb-6 leading-relaxed" v-html="description"></p>
                         
                         <div class="mb-6">
                             <h3 class="font-semibold text-lg mb-4 text-gray-900 dark:text-white">🎯 What I Excel At:</h3>
                             <div class="space-y-2 text-sm">
                                 <div class="flex items-center">
                                     <span class="w-2 h-2 bg-accent rounded-full mr-3"></span>
-                                    <span><strong>Frontend:</strong> Vue.js, JavaScript/TypeScript, Tailwind CSS, Responsive Design</span>
+                                    <span><strong>Frontend:</strong> {{ frontendSkills.join(', ') }}</span>
                                 </div>
                                 <div class="flex items-center">
                                     <span class="w-2 h-2 bg-accent rounded-full mr-3"></span>
-                                    <span><strong>Backend:</strong> Laravel (PHP), MySQL, Redis, RESTful APIs</span>
+                                    <span><strong>Backend:</strong> {{ backendSkills.join(', ') }}</span>
                                 </div>
                                 <div class="flex items-center">
                                     <span class="w-2 h-2 bg-accent rounded-full mr-3"></span>
-                                    <span><strong>DevOps:</strong> Docker, Linux Server Management, Git, CI/CD</span>
+                                    <span><strong>DevOps:</strong> {{ devopsSkills.join(', ') }}</span>
                                 </div>
                             </div>
                         </div>
 
-                        <p class="mb-6 leading-relaxed text-sm bg-gray-50 dark:bg-gray-800 p-4 rounded-lg border-l-4 border-accent">
-                            <strong>💡 My Approach:</strong> I believe in writing clean, maintainable code and following industry best practices. 
-                            Every project is an opportunity to create something meaningful that delivers real value to users and businesses.
-                        </p>
+                        <p class="mb-6 leading-relaxed text-sm bg-gray-50 dark:bg-gray-800 p-4 rounded-lg border-l-4 border-accent" v-html="approachText"></p>
                     </div>
                     <a
                         href="#contact"
