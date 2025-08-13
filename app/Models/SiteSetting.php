@@ -2,13 +2,13 @@
 
 namespace App\Models;
 
+use App\Traits\ClearsSiteSettingsCache;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Support\Collection;
 
 class SiteSetting extends Model
 {
-    use HasFactory;
+    use HasFactory, ClearsSiteSettingsCache;
 
     protected $fillable = [
         'key',

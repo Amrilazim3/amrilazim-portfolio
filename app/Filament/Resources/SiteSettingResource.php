@@ -68,44 +68,117 @@ class SiteSettingResource extends Resource
                     ]),
                 
                 Forms\Components\Section::make('Content')
-                    ->schema([
-                        Forms\Components\TextInput::make('value')
-                            ->label('Value')
-                            ->visible(fn (Forms\Get $get): bool => in_array($get('type'), ['text']))
-                            ->maxLength(255),
+                    ->schema(function (string $operation = null, $record = null) {
+                        $isEdit = $operation === 'edit' || $record;
                         
-                        Forms\Components\Textarea::make('value')
-                            ->label('Value')
-                            ->visible(fn (Forms\Get $get): bool => $get('type') === 'textarea')
-                            ->rows(4),
+                        if ($isEdit && $record) {
+                            // For edit mode, show only the field that matches the record's type
+                            return match($record->type) {
+                                'text' => [
+                                    Forms\Components\TextInput::make('value')
+                                        ->label('Value')
+                                        ->maxLength(255),
+                                ],
+                                'textarea' => [
+                                    Forms\Components\Textarea::make('value')
+                                        ->label('Value')
+                                        ->rows(4),
+                                ],
+                                'file' => [
+                                    Forms\Components\FileUpload::make('value')
+                                        ->label('File')
+                                        ->directory(function () use ($record): string {
+                                            return match($record->group_name) {
+                                                'hero' => 'hero/resume',
+                                                'about' => 'about/files',
+                                                default => 'general/files'
+                                            };
+                                        })
+                                        ->acceptedFileTypes(['application/pdf', 'application/msword', 'application/vnd.openxmlformats-officedocument.wordprocessingml.document'])
+                                        ->maxSize(5120)
+                                        ->disk('public'),
+                                ],
+                                'image' => [
+                                    Forms\Components\FileUpload::make('value')
+                                        ->label('Image')
+                                        ->directory(function () use ($record): string {
+                                            return match($record->group_name) {
+                                                'hero' => 'hero/images',
+                                                'about' => 'about/images',
+                                                'services' => 'services/icons',
+                                                default => 'general/images'
+                                            };
+                                        })
+                                        ->image()
+                                        ->imageEditor()
+                                        ->maxSize(2048)
+                                        ->disk('public')
+                                        ->acceptedFileTypes(['image/jpeg', 'image/png', 'image/webp', 'image/svg+xml']),
+                                ],
+                                'json' => [
+                                    Forms\Components\Textarea::make('value')
+                                        ->label('JSON Value')
+                                        ->helperText('Enter valid JSON format. Example: ["Vue.js", "Laravel", "JavaScript"]')
+                                        ->rows(6)
+                                        ->rules(['json'])
+                                        ->placeholder('["Item 1", "Item 2", "Item 3"]'),
+                                ],
+                                default => []
+                            };
+                        }
                         
-                        Forms\Components\FileUpload::make('value')
-                            ->label('File')
-                            ->visible(fn (Forms\Get $get): bool => $get('type') === 'file')
-                            ->directory('hero/resume')
-                            ->acceptedFileTypes(['application/pdf'])
-                            ->maxSize(5120),
-                        
-                        Forms\Components\FileUpload::make('value')
-                            ->label('Image')
-                            ->visible(fn (Forms\Get $get): bool => $get('type') === 'image')
-                            ->directory(function (Forms\Get $get): string {
-                                return match($get('group_name')) {
-                                    'hero' => 'hero/images',
-                                    'about' => 'about/images',
-                                    default => 'general/images'
-                                };
-                            })
-                            ->image()
-                            ->imageEditor()
-                            ->maxSize(2048),
-                        
-                        Forms\Components\Textarea::make('value')
-                            ->label('JSON Value')
-                            ->visible(fn (Forms\Get $get): bool => $get('type') === 'json')
-                            ->helperText('Enter valid JSON format')
-                            ->rows(6),
-                    ]),
+                        // For create mode, show all fields with visibility based on type selection
+                        return [
+                            Forms\Components\TextInput::make('value')
+                                ->label('Value')
+                                ->visible(fn (Forms\Get $get): bool => in_array($get('type'), ['text']))
+                                ->maxLength(255),
+                            
+                            Forms\Components\Textarea::make('value')
+                                ->label('Value')
+                                ->visible(fn (Forms\Get $get): bool => $get('type') === 'textarea')
+                                ->rows(4),
+                            
+                            Forms\Components\FileUpload::make('value')
+                                ->label('File')
+                                ->visible(fn (Forms\Get $get): bool => $get('type') === 'file')
+                                ->directory(function (Forms\Get $get): string {
+                                    return match($get('group_name')) {
+                                        'hero' => 'hero/resume',
+                                        'about' => 'about/files',
+                                        default => 'general/files'
+                                    };
+                                })
+                                ->acceptedFileTypes(['application/pdf', 'application/msword', 'application/vnd.openxmlformats-officedocument.wordprocessingml.document'])
+                                ->maxSize(5120)
+                                ->disk('public'),
+                            
+                            Forms\Components\FileUpload::make('value')
+                                ->label('Image')
+                                ->visible(fn (Forms\Get $get): bool => $get('type') === 'image')
+                                ->directory(function (Forms\Get $get): string {
+                                    return match($get('group_name')) {
+                                        'hero' => 'hero/images',
+                                        'about' => 'about/images',
+                                        'services' => 'services/icons',
+                                        default => 'general/images'
+                                    };
+                                })
+                                ->image()
+                                ->imageEditor()
+                                ->maxSize(2048)
+                                ->disk('public')
+                                ->acceptedFileTypes(['image/jpeg', 'image/png', 'image/webp', 'image/svg+xml']),
+                            
+                            Forms\Components\Textarea::make('value')
+                                ->label('JSON Value')
+                                ->visible(fn (Forms\Get $get): bool => $get('type') === 'json')
+                                ->helperText('Enter valid JSON format. Example: ["Vue.js", "Laravel", "JavaScript"]')
+                                ->rows(6)
+                                ->rules(['json'])
+                                ->placeholder('["Item 1", "Item 2", "Item 3"]'),
+                        ];
+                    }),
             ]);
     }
 
@@ -117,24 +190,27 @@ class SiteSettingResource extends Resource
                     ->searchable()
                     ->sortable(),
                 
-                Tables\Columns\BadgeColumn::make('group_name')
-                    ->colors([
-                        'primary' => 'hero',
-                        'success' => 'about',
-                        'warning' => 'contact',
-                        'danger' => 'services',
-                        'secondary' => 'general',
-                    ])
+                Tables\Columns\TextColumn::make('group_name')
+                    ->badge()
+                    ->color(fn (string $state): string => match ($state) {
+                        'hero' => 'info',
+                        'about' => 'success',
+                        'contact' => 'warning',
+                        'services' => 'danger',
+                        default => 'gray',
+                    })
                     ->searchable(),
                 
-                Tables\Columns\BadgeColumn::make('type')
-                    ->colors([
-                        'primary' => 'text',
-                        'success' => 'textarea',
-                        'warning' => 'file',
-                        'danger' => 'image',
-                        'secondary' => 'json',
-                    ]),
+                Tables\Columns\TextColumn::make('type')
+                    ->badge()
+                    ->color(fn (string $state): string => match ($state) {
+                        'text' => 'info',
+                        'textarea' => 'success',
+                        'file' => 'warning',
+                        'image' => 'danger',
+                        'json' => 'gray',
+                        default => 'gray',
+                    }),
                 
                 Tables\Columns\TextColumn::make('value')
                     ->limit(50)

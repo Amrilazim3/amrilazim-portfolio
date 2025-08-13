@@ -11,11 +11,13 @@ use App\Services\SiteSettingService;
 use Illuminate\Http\Request;
 use Inertia\Inertia;
 use Inertia\Response;
+use Symfony\Component\VarDumper\VarDumper;
 
 class WelcomeController extends Controller
 {
     public function index(): Response
     {
+        // VarDumper::dump(SiteSettingService::getHeroSettings());
         return Inertia::render('Welcome', [
             // Existing data
             'skills' => Skill::all(),

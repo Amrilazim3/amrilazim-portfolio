@@ -3,7 +3,6 @@
 namespace App\Services;
 
 use App\Models\SiteSetting;
-use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Cache;
 
 class SiteSettingService
@@ -57,7 +56,7 @@ class SiteSettingService
         $settings = self::getGroup('hero');
         
         return [
-            'greeting' => $settings['hero_greeting'] ?? '👋 Hey, I\'m Amril',
+            'greeting' => $settings['hero_greeting'] ?? '👋 Hey, I\'m Amril asd',
             'title' => $settings['hero_title'] ?? 'I Build Amazing',
             'title_highlight' => $settings['hero_title_highlight'] ?? 'Digital Experiences',
             'description' => $settings['hero_description'] ?? 'Full-stack developer with experience in both web and mobile development...',
@@ -81,13 +80,13 @@ class SiteSettingService
             'description' => $settings['about_description'] ?? 'With over 4+ years of experience...',
             'approach_text' => $settings['about_approach'] ?? 'I believe in writing clean, maintainable code...',
             'image' => $settings['about_image'] ?? '/img/about.jpeg',
-            'frontend_skills' => json_decode($settings['about_frontend_skills'] ?? '[]', true) ?: [
+            'frontend_skills' => $settings['about_frontend_skills'] ?? [
                 'Vue.js', 'JavaScript/TypeScript', 'Tailwind CSS', 'Responsive Design'
             ],
-            'backend_skills' => json_decode($settings['about_backend_skills'] ?? '[]', true) ?: [
+            'backend_skills' => $settings['about_backend_skills'] ?? [
                 'Laravel (PHP)', 'MySQL', 'Redis', 'RESTful APIs'
             ],
-            'devops_skills' => json_decode($settings['about_devops_skills'] ?? '[]', true) ?: [
+            'devops_skills' => $settings['about_devops_skills'] ?? [
                 'Docker', 'Linux Server Management', 'Git', 'CI/CD'
             ],
         ];
