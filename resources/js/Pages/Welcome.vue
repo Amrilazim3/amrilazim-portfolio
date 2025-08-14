@@ -35,7 +35,7 @@ defineProps({
         <!-- Portfolio primary -->
         <Portfolio :skills="skills" :projects="projects" />
         <!-- Services secondary -->
-        <!-- <Services :services-data="servicesData" /> -->
+        <Services :services-data="servicesData" />
         <!-- Testimonials primary -->
         <!-- <Testimonials /> -->
         <!-- Continuous Learning secondary -->

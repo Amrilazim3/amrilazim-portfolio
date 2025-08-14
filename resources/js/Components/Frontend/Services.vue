@@ -9,9 +9,9 @@ const props = defineProps({
 });
 
 // Computed properties with fallbacks
-const title = computed(() => props.servicesData?.settings?.title || 'How I Can Help Your Business');
-const subtitle = computed(() => props.servicesData?.settings?.subtitle || 'From initial concept to final deployment...');
-const services = computed(() => props.servicesData?.services || []);
+const title = computed(() => props.servicesData?.settings?.title);
+const subtitle = computed(() => props.servicesData?.settings?.subtitle);
+const services = computed(() => props.servicesData?.services);
 </script>
 <template>
     <section
