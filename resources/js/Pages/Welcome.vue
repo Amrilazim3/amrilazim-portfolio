@@ -39,7 +39,7 @@ defineProps({
         <!-- Testimonials primary -->
         <!-- <Testimonials /> -->
         <!-- Continuous Learning secondary -->
-        <!-- <Certifications :certifications="certifications" /> -->
+        <Certifications :certifications="certifications" />
         <!-- Contact primary -->
         <!-- <ContactMe :contact-data="contactData" /> -->
     </FrontendLayout>
