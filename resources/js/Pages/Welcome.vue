@@ -36,8 +36,6 @@ defineProps({
         <Portfolio :skills="skills" :projects="projects" />
         <!-- Services secondary -->
         <Services :services-data="servicesData" />
-        <!-- Testimonials primary -->
-        <!-- <Testimonials /> -->
         <!-- Continuous Learning secondary -->
         <Certifications :certifications="certifications" />
         <!-- Contact primary -->
