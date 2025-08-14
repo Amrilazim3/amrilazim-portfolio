@@ -8,6 +8,10 @@ trait ClearsSiteSettingsCache
 {
     protected static function bootClearsSiteSettingsCache()
     {
+        static::created(function ($model) {
+            SiteSettingService::clearCache();
+        });
+
         static::saved(function ($model) {
             SiteSettingService::clearCache();
         });
