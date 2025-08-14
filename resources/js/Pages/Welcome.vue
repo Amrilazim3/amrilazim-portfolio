@@ -41,6 +41,6 @@ defineProps({
         <!-- Continuous Learning secondary -->
         <Certifications :certifications="certifications" />
         <!-- Contact primary -->
-        <!-- <ContactMe :contact-data="contactData" /> -->
+        <ContactMe :contact-data="contactData" />
     </FrontendLayout>
 </template>
