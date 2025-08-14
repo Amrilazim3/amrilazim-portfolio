@@ -33,7 +33,7 @@ defineProps({
         <!-- Skills primary -->
         <Skills :skills="skills" />
         <!-- Portfolio primary -->
-        <!-- <Portfolio :skills="skills" :projects="projects" /> -->
+        <Portfolio :skills="skills" :projects="projects" />
         <!-- Services secondary -->
         <!-- <Services :services-data="servicesData" /> -->
         <!-- Testimonials primary -->

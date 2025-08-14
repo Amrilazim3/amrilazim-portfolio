@@ -6,15 +6,15 @@ const props = defineProps({
     projects: Object,
 });
 
-const filteredProjects = ref(props.projects.data);
+const filteredProjects = ref(props.projects);
 const selectedSkill = ref("all");
 
 const filterProjects = (id) => {
     if (id === "all") {
-        filteredProjects.value = props.projects.data;
+        filteredProjects.value = props.projects;
         selectedSkill.value = id;
     } else {
-        filteredProjects.value = props.projects.data.filter((project) => {
+        filteredProjects.value = props.projects.filter((project) => {
             return project.skill.id === id;
         });
         selectedSkill.value = id;
@@ -43,7 +43,7 @@ const filterProjects = (id) => {
                 </li>
                 <li
                     class="cursor-pointer capitalize m-4 justify-self-stretch "
-                    v-for="projectSkill in skills.data"
+                    v-for="projectSkill in props.skills"
                     :key="projectSkill.id"
                 >
                     <button

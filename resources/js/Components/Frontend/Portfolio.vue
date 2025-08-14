@@ -1,6 +1,6 @@
 <script setup>
 import Projects from "./Projects.vue";
-defineProps({
+const props = defineProps({
     skills: Object,
     projects: Object,
 });
@@ -30,6 +30,6 @@ defineProps({
                 </p>
             </div>
         </div>
-        <Projects :skills="skills" :projects="projects" />
+        <Projects :skills="props.skills" :projects="props.projects" />
     </section>
 </template>
