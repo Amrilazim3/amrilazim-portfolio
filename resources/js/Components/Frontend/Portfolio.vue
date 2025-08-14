@@ -1,9 +1,15 @@
 <script setup>
 import Projects from "./Projects.vue";
+import { computed } from 'vue';
+
 const props = defineProps({
     skills: Object,
     projects: Object,
+    portfolioData: Object,
 });
+
+const title = computed(() => props.portfolioData?.title);
+const subtitle = computed(() => props.portfolioData?.subtitle);
 </script>
 <template>
     <section
@@ -23,11 +29,8 @@ const props = defineProps({
             }"
         >
             <div class="flex flex-col items-center text-center">
-                <h2 class="section-title">Featured Projects & Case Studies</h2>
-                <p class="subtitle">
-                    Real projects, real results. Here's a showcase of web applications I've built for clients, 
-                    featuring detailed case studies that demonstrate my problem-solving approach and technical expertise.
-                </p>
+                <h2 class="section-title">{{ title }}</h2>
+                <p class="subtitle">{{ subtitle }}</p>
             </div>
         </div>
         <Projects :skills="props.skills" :projects="props.projects" />

@@ -26,13 +26,15 @@ class WelcomeController extends Controller
             
             // New dynamic content
             'heroData' => SiteSettingService::getHeroSettings(),
+            'socialLinks' => SocialLink::active()->ordered()->get(),
             'aboutData' => SiteSettingService::getAboutSettings(),
-            'contactData' => SiteSettingService::getContactSettings(),
+            'portfolioData' => SiteSettingService::getPortfolioSettings(),
+            'learningData' => SiteSettingService::getLearningSettings(),
             'servicesData' => [
                 'settings' => SiteSettingService::getServicesSettings(),
                 'services' => Service::active()->ordered()->get(),
             ],
-            'socialLinks' => SocialLink::active()->ordered()->get(),
+            'contactData' => SiteSettingService::getContactSettings(),
         ]);
     }
 }

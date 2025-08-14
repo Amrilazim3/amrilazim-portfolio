@@ -93,17 +93,46 @@ class SiteSettingService
     }
 
     /**
-     * Get contact section settings
+     * Get about portfolio section settings
+     * 
      */
-    public static function getContactSettings(): array
+    public static function getPortfolioSettings(): array
     {
-        $settings = self::getGroup('contact');
+        $settings = self::getGroup('portfolio');
         
         return [
-            'title' => $settings['contact_title'] ?? 'Contact Me',
-            'subtitle' => $settings['contact_subtitle'] ?? 'If you are interested in working with me, feel free to send me an email or message.',
-            'email' => $settings['contact_email'] ?? 'a.azim0711@gmail.com',
-            'description' => $settings['contact_description'] ?? 'Have a question?',
+            'title' => $settings['portfolio_title'] ?? 'Featured Projects & Case Studies',
+            'subtitle' => $settings['portfolio_subtitle'] ?? 'Real projects, real results. Here\'s a showcase of web applications I\'ve built for clients, featuring detailed case studies that demonstrate my problem-solving approach and technical expertise.',
+        ];
+    }
+
+    /**
+     * Get about learning section settings
+     * 
+     */
+    public static function getLearningSettings(): array
+    {
+        $settings = self::getGroup('learning');
+        
+        return [
+            'title' => $settings['learning_title'] ?? 'Continuous Learning Journey',
+            'subtitle' => $settings['learning_subtitle'] ?? '🚀 Committed to staying current with the latest technologies and best practices. Here are some of the courses I\'ve completed to enhance my skills and knowledge.',
+            'phylosophy' => [
+                'title' => $settings['learning_phylosophy_title'] ?? '🚀 Committed to Continuous Growth',
+                'description' => $settings['learning_phylosophy_description'] ?? 'Technology evolves rapidly, and so do I. I\'m constantly learning new technologies through online courses, practical projects, and staying current with industry best practices. This commitment to continuous learning ensures I can always bring the latest techniques to your projects.',
+            ],
+            'hours' => [
+                'value' => $settings['learning_hours_value'] ?? '100+',
+                'description' => $settings['learning_hours_description'] ?? 'Hours of Learning',
+            ],
+            'years' => [
+                'value' => $settings['learning_years_value'] ?? '4+',
+                'description' => $settings['learning_years_description'] ?? 'Years of Experience',
+            ],
+            'courses' => [
+                'value' => $settings['learning_courses_value'] ?? '6+',
+                'description' => $settings['learning_courses_description'] ?? 'Completed Courses',
+            ],
         ];
     }
 
@@ -121,11 +150,26 @@ class SiteSettingService
     }
 
     /**
+     * Get contact section settings
+     */
+    public static function getContactSettings(): array
+    {
+        $settings = self::getGroup('contact');
+        
+        return [
+            'title' => $settings['contact_title'] ?? 'Contact Me',
+            'subtitle' => $settings['contact_subtitle'] ?? 'If you are interested in working with me, feel free to send me an email or message.',
+            'email' => $settings['contact_email'] ?? 'a.azim0711@gmail.com',
+            'description' => $settings['contact_description'] ?? 'Have a question?',
+        ];
+    }
+
+    /**
      * Clear all cache
      */
     public static function clearCache(): void
     {
-        $groups = ['hero', 'about', 'contact', 'services', 'general'];
+        $groups = ['hero', 'about', 'portfolio', 'learning', 'services', 'contact', 'general'];
         
         foreach ($groups as $group) {
             Cache::forget(self::CACHE_PREFIX . 'group:' . $group);
@@ -146,8 +190,10 @@ class SiteSettingService
         return [
             'hero' => self::getHeroSettings(),
             'about' => self::getAboutSettings(),
-            'contact' => self::getContactSettings(),
+            'portfolio' => self::getPortfolioSettings(),
+            'learning' => self::getLearningSettings(),
             'services' => self::getServicesSettings(),
+            'contact' => self::getContactSettings(),
         ];
     }
 } 
