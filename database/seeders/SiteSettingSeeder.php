@@ -130,6 +130,110 @@ class SiteSettingSeeder extends Seeder
                 'order_index' => 8,
             ],
 
+            // Portfolio Section Settings
+            [
+                'key' => 'portfolio_title',
+                'value' => 'Featured Projects & Case Studies',
+                'type' => 'text',
+                'group_name' => 'portfolio',
+                'order_index' => 1,
+            ],
+            [
+                'key' => 'portfolio_subtitle',
+                'value' => 'Real projects, real results. Here\'s a showcase of web applications I\'ve built for clients, featuring detailed case studies that demonstrate my problem-solving approach and technical expertise.',
+                'type' => 'textarea',
+                'group_name' => 'portfolio',
+                'order_index' => 2,
+            ],
+
+            // Services Section Settings
+            [
+                'key' => 'services_title',
+                'value' => 'How I Can Help Your Business',
+                'type' => 'text',
+                'group_name' => 'services',
+                'order_index' => 1,
+            ],
+            [
+                'key' => 'services_subtitle',
+                'value' => 'From initial concept to final deployment, I provide comprehensive web development services that help businesses establish a strong digital presence and achieve their goals.',
+                'type' => 'textarea',
+                'group_name' => 'services',
+                'order_index' => 2,
+            ],
+
+            // Learning Section Settings
+            [
+                'key' => 'learning_title',
+                'value' => 'Continuous Learning Journey',
+                'type' => 'text',
+                'group_name' => 'learning',
+                'order_index' => 1,
+            ],
+            [
+                'key' => 'learning_subtitle',
+                'value' => '🚀 Committed to staying current with the latest technologies and best practices. Here are some of the courses I\'ve completed to enhance my skills and knowledge.',
+                'type' => 'textarea',
+                'group_name' => 'learning',
+                'order_index' => 2,
+            ],
+            [
+                'key' => 'learning_phylosophy_title',
+                'value' => '🚀 Committed to Continuous Growth',
+                'type' => 'text',
+                'group_name' => 'learning',
+                'order_index' => 3,
+            ],
+            [
+                'key' => 'learning_phylosophy_description',
+                'value' => 'Technology evolves rapidly, and so do I. I\'m constantly learning new technologies through online courses, practical projects, and staying current with industry best practices. This commitment to continuous learning ensures I can always bring the latest techniques to your projects.',
+                'type' => 'textarea',
+                'group_name' => 'learning',
+                'order_index' => 4,
+            ],
+            [
+                'key' => 'learning_hours_value',
+                'value' => '100+',
+                'type' => 'text',
+                'group_name' => 'learning',
+                'order_index' => 5,
+            ],
+            [
+                'key' => 'learning_hours_description',
+                'value' => 'Hours of Learning',
+                'type' => 'text',
+                'group_name' => 'learning',
+                'order_index' => 6,
+            ],
+            [
+                'key' => 'learning_years_value',
+                'value' => '4+',
+                'type' => 'text',
+                'group_name' => 'learning',
+                'order_index' => 7,
+            ],
+            [
+                'key' => 'learning_years_description',
+                'value' => 'Years of Experience',
+                'type' => 'text',
+                'group_name' => 'learning',
+                'order_index' => 8,
+            ],
+            [
+                'key' => 'learning_courses_value',
+                'value' => '6+',
+                'type' => 'text',
+                'group_name' => 'learning',
+                'order_index' => 9,
+            ],
+            [
+                'key' => 'learning_courses_description',
+                'value' => 'Completed Courses',
+                'type' => 'text',
+                'group_name' => 'learning',
+                'order_index' => 10,
+            ],
+
             // Contact Section Settings
             [
                 'key' => 'contact_title',
@@ -158,22 +262,6 @@ class SiteSettingSeeder extends Seeder
                 'type' => 'text',
                 'group_name' => 'contact',
                 'order_index' => 4,
-            ],
-
-            // Services Section Settings
-            [
-                'key' => 'services_title',
-                'value' => 'How I Can Help Your Business',
-                'type' => 'text',
-                'group_name' => 'services',
-                'order_index' => 1,
-            ],
-            [
-                'key' => 'services_subtitle',
-                'value' => 'From initial concept to final deployment, I provide comprehensive web development services that help businesses establish a strong digital presence and achieve their goals.',
-                'type' => 'textarea',
-                'group_name' => 'services',
-                'order_index' => 2,
             ],
         ];
 
