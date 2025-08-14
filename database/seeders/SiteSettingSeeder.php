@@ -59,14 +59,14 @@ class SiteSettingSeeder extends Seeder
             ],
             [
                 'key' => 'hero_image',
-                'value' => 'hero/hero-mh3f1u.jpeg',
+                'value' => 'hero/images/hero-mh3f1u.jpeg',
                 'type' => 'image',
                 'group_name' => 'hero',
                 'order_index' => 7,
             ],
             [
                 'key' => 'hero_resume',
-                'value' => 'hero/amrilresumeJULY25.pdf',
+                'value' => 'hero/resume/amrilresumeJULY25.pdf',
                 'type' => 'file',
                 'group_name' => 'hero',
                 'order_index' => 8,
@@ -96,7 +96,7 @@ class SiteSettingSeeder extends Seeder
             ],
             [
                 'key' => 'about_image',
-                'value' => 'about/about.jpeg',
+                'value' => 'about/images/about.jpeg',
                 'type' => 'image',
                 'group_name' => 'about',
                 'order_index' => 4,
