@@ -25,22 +25,22 @@ defineProps({
 
 <template>
     <Head title="Welcome Page" />
-    <FrontendLayout>
+    <FrontendLayout :hero-data="heroData">
         <!-- Hero primary -->
         <Hero :hero-data="heroData" :social-links="socialLinks" />
         <!-- About secondary -->
-        <About :about-data="aboutData" />
+        <!-- <About :about-data="aboutData" /> -->
         <!-- Skills tail-100 -->
-        <Skills :skills="skills" />
+        <!-- <Skills :skills="skills" /> -->
         <!-- Portfolio primary -->
-        <Portfolio :skills="skills" :projects="projects" />
+        <!-- <Portfolio :skills="skills" :projects="projects" /> -->
         <!-- Services secondary -->
-        <Services :services-data="servicesData" />
+        <!-- <Services :services-data="servicesData" /> -->
         <!-- Testimonials primary -->
         <!-- <Testimonials /> -->
         <!-- Continuous Learning secondary -->
-        <Certifications :certifications="certifications" />
+        <!-- <Certifications :certifications="certifications" /> -->
         <!-- Contact primary -->
-        <ContactMe :contact-data="contactData" />
+        <!-- <ContactMe :contact-data="contactData" /> -->
     </FrontendLayout>
 </template>

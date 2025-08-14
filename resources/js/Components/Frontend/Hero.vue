@@ -13,14 +13,13 @@ const props = defineProps({
 });
 
 // Computed properties with fallbacks
-const greeting = computed(() => props.heroData?.greeting || '👋 Hey, I\'m Amril');
-const title = computed(() => props.heroData?.title || 'I Build Amazing');
-const titleHighlight = computed(() => props.heroData?.title_highlight || 'Digital Experiences');
-const description = computed(() => props.heroData?.description || 'Full-stack developer with experience...');
-const ctaText = computed(() => props.heroData?.cta_text || 'Work with me');
-const ctaLink = computed(() => props.heroData?.cta_link || '/#contact');
-const heroImage = computed(() => props.heroData?.image || '/img/hero-mh3f1u.jpeg');
-const resumeFile = computed(() => props.heroData?.resume_file || '/img/amrilresumeJULY25.pdf');
+const greeting = computed(() => props.heroData?.greeting);
+const title = computed(() => props.heroData?.title);
+const titleHighlight = computed(() => props.heroData?.title_highlight);
+const description = computed(() => props.heroData?.description);
+const ctaText = computed(() => props.heroData?.cta_text);
+const ctaLink = computed(() => props.heroData?.cta_link);
+const heroImage = computed(() => props.heroData?.image);
 
 // Function to track social media clicks
 const trackSocialClick = (platform) => {
