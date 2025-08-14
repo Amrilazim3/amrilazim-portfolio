@@ -41,7 +41,7 @@ const services = computed(() => props.servicesData?.services);
                     class="bg-light-tail-100 dark:bg-dark-navy-500 p-6 rounded-2xl"
                 >
                     <div
-                        class="text-accent rounded-sm w-12 h-12 flex justify-center items-center mb-16 text-[28px]"
+                        class="text-accent rounded-sm w-12 h-12 flex justify-center items-center mb-8 text-[28px]"
                     >
                         <div 
                             v-if="service.icon_type === 'svg'" 
