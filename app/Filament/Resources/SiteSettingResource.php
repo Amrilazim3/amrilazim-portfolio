@@ -55,8 +55,10 @@ class SiteSettingResource extends Resource
                             ->options([
                                 'hero' => 'Hero Section',
                                 'about' => 'About Section',
-                                'contact' => 'Contact Section',
+                                'portfolio' => 'Portfolio Section',
                                 'services' => 'Services Section',
+                                'Learning' => 'Learning Section',
+                                'contact' => 'Contact Section',
                                 'general' => 'General',
                             ])
                             ->default('general'),
@@ -233,8 +235,10 @@ class SiteSettingResource extends Resource
                     ->options([
                         'hero' => 'Hero Section',
                         'about' => 'About Section',
-                        'contact' => 'Contact Section',
+                        'portfolio' => 'Portfolio Section',
                         'services' => 'Services Section',
+                        'Learning' => 'Learning Section',
+                        'contact' => 'Contact Section',
                         'general' => 'General',
                     ]),
                 
