@@ -62,8 +62,8 @@ class SiteSettingService
             'description' => $settings['hero_description'] ?? 'Full-stack developer with experience in both web and mobile development...',
             'cta_text' => $settings['hero_cta_text'] ?? 'Work with me',
             'cta_link' => $settings['hero_cta_link'] ?? '/#contact',
-            'image' => $settings['hero_image'] ?? '/img/hero-mh3f1u.jpeg',
-            'resume_file' => $settings['hero_resume'] ?? '/img/amrilresumeJULY25.pdf',
+            'image' => $settings['hero_image'] ?? '/hero/images/hero-mh3f1u.jpeg',
+            'resume_file' => $settings['hero_resume'] ?? '/hero/resume/amrilresumeJULY25.pdf',
         ];
     }
 
