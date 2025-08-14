@@ -29,7 +29,7 @@ defineProps({
         <!-- Hero primary -->
         <Hero :hero-data="heroData" :social-links="socialLinks" />
         <!-- About secondary -->
-        <!-- <About :about-data="aboutData" /> -->
+        <About :about-data="aboutData" />
         <!-- Skills tail-100 -->
         <!-- <Skills :skills="skills" /> -->
         <!-- Portfolio primary -->

@@ -9,14 +9,14 @@ const props = defineProps({
 });
 
 // Computed properties with fallbacks
-const title = computed(() => props.aboutData?.title || 'Turning Ideas Into Reality');
-const subtitle = computed(() => props.aboutData?.subtitle || 'Full Stack Developer & Problem Solver');
-const description = computed(() => props.aboutData?.description || 'With over 4+ years of experience...');
-const approachText = computed(() => props.aboutData?.approach_text || 'I believe in writing clean, maintainable code...');
-const aboutImage = computed(() => props.aboutData?.image || '/img/about.jpeg');
-const frontendSkills = computed(() => props.aboutData?.frontend_skills || ['Vue.js', 'JavaScript/TypeScript', 'Tailwind CSS', 'Responsive Design']);
-const backendSkills = computed(() => props.aboutData?.backend_skills || ['Laravel (PHP)', 'MySQL', 'Redis', 'RESTful APIs']);
-const devopsSkills = computed(() => props.aboutData?.devops_skills || ['Docker', 'Linux Server Management', 'Git', 'CI/CD']);
+const title = computed(() => props.aboutData?.title);
+const subtitle = computed(() => props.aboutData?.subtitle);
+const description = computed(() => props.aboutData?.description);
+const approachText = computed(() => props.aboutData?.approach_text);
+const aboutImage = computed(() => props.aboutData?.image);
+const frontendSkills = computed(() => props.aboutData?.frontend_skills);
+const backendSkills = computed(() => props.aboutData?.backend_skills);
+const devopsSkills = computed(() => props.aboutData?.devops_skills);
 </script>
 
 <template>
