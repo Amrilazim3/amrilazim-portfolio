@@ -2,13 +2,14 @@
 
 namespace App\Models;
 
+use App\Traits\ClearsProjectCache;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Storage;
 
 class Project extends Model
 {
-    use HasFactory;
+    use HasFactory, ClearsProjectCache;
 
     protected $fillable = [
         'skill_id', 

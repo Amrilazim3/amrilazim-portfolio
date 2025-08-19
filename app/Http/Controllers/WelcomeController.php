@@ -2,12 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Certification;
-use App\Models\Project;
 use App\Models\Service;
-use App\Models\Skill;
-use App\Models\SocialLink;
+use App\Services\CertificationService;
+use App\Services\ProjectService;
 use App\Services\SiteSettingService;
+use App\Services\SkillService;
+use App\Services\SocialLinkService;
 use Illuminate\Http\Request;
 use Inertia\Inertia;
 use Inertia\Response;
@@ -17,16 +17,15 @@ class WelcomeController extends Controller
 {
     public function index(): Response
     {
-        // VarDumper::dump(SiteSettingService::getHeroSettings());
         return Inertia::render('Welcome', [
-            // Existing data
-            'skills' => Skill::all(),
-            'projects' => Project::with('skill')->get(),
-            'certifications' => Certification::all(),
+            // Cached data
+            'skills' => SkillService::getAll(),
+            'projects' => ProjectService::getAll(),
+            'certifications' => CertificationService::getAll(),
             
             // New dynamic content
             'heroData' => SiteSettingService::getHeroSettings(),
-            'socialLinks' => SocialLink::active()->ordered()->get(),
+            'socialLinks' => SocialLinkService::getActive(),
             'aboutData' => SiteSettingService::getAboutSettings(),
             'portfolioData' => SiteSettingService::getPortfolioSettings(),
             'learningData' => SiteSettingService::getLearningSettings(),
