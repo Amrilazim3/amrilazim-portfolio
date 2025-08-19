@@ -13,7 +13,7 @@
       "resources/js/Pages/Welcome.vue"
     ],
     "css": [
-      "assets/app.4ee302a5.css"
+      "assets/app.3f660d30.css"
     ]
   },
   "resources/js/Pages/Auth/ConfirmPassword.vue": {
@@ -107,7 +107,7 @@
     ]
   },
   "resources/js/app.css": {
-    "file": "assets/app.4ee302a5.css",
+    "file": "assets/app.3f660d30.css",
     "src": "resources/js/app.css"
   }
 }
