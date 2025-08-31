@@ -3,13 +3,14 @@
 namespace App\Models;
 
 use App\Services\ImageProcessingService;
+use App\Traits\ClearsSkillCache;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Storage;
 
 class Skill extends Model
 {
-    use HasFactory;
+    use HasFactory, ClearsSkillCache;
 
     protected $fillable = ['name', 'image'];
 

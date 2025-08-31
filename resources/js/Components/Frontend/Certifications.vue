@@ -1,7 +1,21 @@
 <script setup>
-defineProps({
-    certifications: Object
+import { computed } from 'vue';
+
+const props = defineProps({
+    certifications: Object,
+    learningData: Object
 });
+
+const title = computed(() => props.learningData?.title);
+const subtitle = computed(() => props.learningData?.subtitle);
+const phylosophyTitle = computed(() => props.learningData?.phylosophy?.title);
+const phylosophyDescription = computed(() => props.learningData?.phylosophy?.description);
+const hoursValue = computed(() => props.learningData?.hours?.value);
+const hoursDescription = computed(() => props.learningData?.hours?.description);
+const yearsValue = computed(() => props.learningData?.years?.value);
+const yearsDescription = computed(() => props.learningData?.years?.description);
+const coursesValue = computed(() => props.learningData?.courses?.value);
+const coursesDescription = computed(() => props.learningData?.courses?.description);
 </script>
 
 <template>
@@ -16,16 +30,15 @@ defineProps({
                 :initial="{ opacity: 0, y: 100 }"
                 :visible="{ opacity: 1, y: 0 }"
             >
-                <h2 class="section-title">Continuous Learning Journey</h2>
+                <h2 class="section-title">{{ title }}</h2>
                 <p class="subtitle">
-                    Committed to staying current with the latest technologies and best practices. 
-                    Here are some of the courses I've completed to enhance my skills and knowledge.
+                    {{ subtitle }}
                 </p>
             </div>
 
-            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mb-12" v-if="certifications.data.length > 0">
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mb-12" v-if="props.certifications.length > 0">
                 <div
-                    v-for="(certification, index) in certifications.data"
+                    v-for="(certification, index) in props.certifications"
                     :key="certification.id"
                     class="bg-white dark:bg-dark-navy-500 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 p-6"
                     v-motion
@@ -134,25 +147,23 @@ defineProps({
             >
                 <div class="max-w-3xl mx-auto">
                     <h3 class="text-2xl font-bold mb-4 text-gray-900 dark:text-white">
-                        🚀 Committed to Continuous Growth
+                        {{ phylosophyTitle }}
                     </h3>
                     <p class="text-gray-600 dark:text-gray-300 leading-relaxed mb-6">
-                        Technology evolves rapidly, and so do I. I'm constantly learning new technologies through 
-                        online courses, practical projects, and staying current with industry best practices. 
-                        This commitment to continuous learning ensures I can always bring the latest techniques to your projects.
+                        {{ phylosophyDescription }}
                     </p>
                     <div class="grid md:grid-cols-3 gap-6 mt-6">
                         <div class="text-center">
-                            <div class="text-3xl font-bold text-accent mb-2">{{ certifications.data.length }}+</div>
-                            <div class="text-sm text-gray-600 dark:text-gray-400">Completed Courses</div>
+                            <div class="text-3xl font-bold text-accent mb-2">{{ props.certifications.length }}+</div>
+                            <div class="text-sm text-gray-600 dark:text-gray-400">{{ coursesDescription }}</div>
                         </div>
                         <div class="text-center">
-                            <div class="text-3xl font-bold text-accent mb-2">100+</div>
-                            <div class="text-sm text-gray-600 dark:text-gray-400">Hours of Learning</div>
+                            <div class="text-3xl font-bold text-accent mb-2">{{ hoursValue }}</div>
+                            <div class="text-sm text-gray-600 dark:text-gray-400">{{ hoursDescription }}</div>
                         </div>
                         <div class="text-center">
-                            <div class="text-3xl font-bold text-accent mb-2">4+</div>
-                            <div class="text-sm text-gray-600 dark:text-gray-400">Years of Experience</div>
+                            <div class="text-3xl font-bold text-accent mb-2">{{ yearsValue }}</div>
+                            <div class="text-sm text-gray-600 dark:text-gray-400">{{ yearsDescription }}</div>
                         </div>
                     </div>
                 </div>

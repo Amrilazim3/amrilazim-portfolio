@@ -1,9 +1,18 @@
 <script setup>
-import { ref, onMounted, reactive, onUnmounted } from "vue";
+import { computed, ref, onMounted, reactive, onUnmounted } from "vue";
 import { Link } from '@inertiajs/inertia-vue3'
 const showMobileMenu = ref(false);
 const scrollBg = ref(false);
 const currentSection = ref('home');
+
+const props = defineProps({
+    resumeFile: {
+        type: String,
+        default: () => ''
+    }
+});
+
+const resumeFile = computed(() => props.resumeFile);
 
 const navigations = reactive([
     { name: "Home", href: "#home", active: true },
@@ -13,7 +22,7 @@ const navigations = reactive([
     // { name: "Testimonials", href: "#testimonials", active: false },
     { name: "Learning", href: "#certifications", active: false },
     { name: "Contact", href: "#contact", active: false },
-    { name: "Resume", href: route().t.url + '/img/amrilresumeJULY25.pdf', active: false },
+    { name: "Resume", href: resumeFile.value, active: false },
 ]);
 
 const setScrollBg = (value) => {

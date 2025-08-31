@@ -1,14 +1,24 @@
 <?php
 
 use App\Http\Controllers\ContactController;
-use App\Http\Controllers\ProjectController;
-use App\Http\Controllers\SkillController;
 use App\Http\Controllers\WelcomeController;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 
-Route::get('/', [WelcomeController::class, 'welcome'])->name('welcome');
+/*
+|--------------------------------------------------------------------------
+| Web Routes
+|--------------------------------------------------------------------------
+|
+| Here is where you can register web routes for your application. These
+| routes are loaded by the RouteServiceProvider within a group which
+| contains the "web" middleware group. Now create something great!
+|
+*/
+
+Route::get('/', [WelcomeController::class, 'index'])->name('welcome');
+
 Route::post('/contact', ContactController::class)->name('contact');
 
 // Sitemap route
@@ -30,4 +40,4 @@ Route::get('/sitemap.xml', function () {
 
 // Admin routes are now handled by FilamentPHP at /admin
 
-require __DIR__ . '/auth.php';
+require __DIR__.'/auth.php';

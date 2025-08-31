@@ -3,6 +3,16 @@ import Header from "@/Components/Frontend/Header.vue";
 import Footer from "@/Components/Frontend/Footer.vue";
 import StructuredData from "@/Components/StructuredData.vue";
 import Performance from "@/Components/Performance.vue";
+import { computed } from 'vue';
+
+const props = defineProps({
+    heroData: {
+        type: Object,
+        default: () => ({})
+    },
+});
+
+const resumeFile = computed(() => props.heroData?.resume_file);
 </script>
 <template>
   <div class="bg-slate-200 dark:bg-slate-900">
@@ -14,7 +24,7 @@ import Performance from "@/Components/Performance.vue";
     <Performance />
     
     <!-- Header -->
-    <Header />
+    <Header :resumeFile="resumeFile" />
     <main id="main-content" class="min-h-screen" role="main">
       <slot />
     </main>
