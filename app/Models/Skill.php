@@ -14,10 +14,10 @@ class Skill extends Model
 
     protected $fillable = ['name', 'image'];
 
-    // Accessor for image URL
-    public function getImageUrlAttribute()
+    // Accessor for image
+    public function getImageAttribute($value)
     {
-        return $this->image ? asset('storage/' . $this->image) : null;
+        return $value ? asset('storage/' . $value) : null;
     }
 
     public function projects()

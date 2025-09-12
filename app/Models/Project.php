@@ -35,10 +35,10 @@ class Project extends Model
         'is_featured' => 'boolean',
     ];
 
-    // Accessor for image URL
-    public function getImageUrlAttribute()
+    // Accessor for image
+    public function getImageAttribute($value)
     {
-        return $this->image ? asset('storage/' . $this->image) : null;
+        return $value ? asset('storage/' . $value) : null;
     }
 
     public function skill()
