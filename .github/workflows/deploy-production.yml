@@ -1,0 +1,110 @@
+name: Deploy to Production
+
+on:
+  push:
+    tags:
+      - 'v*'
+  workflow_dispatch:
+    inputs:
+      image_tag:
+        description: 'Docker image tag to deploy'
+        required: true
+        default: 'latest'
+
+env:
+  GCP_REGION: asia-southeast1
+  GCP_PROJECT: amrilazim-portfolio
+  GCP_REPO: app
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+
+    - name: Set up Docker Buildx
+      uses: docker/setup-buildx-action@v3
+
+    - name: Authenticate to Google Cloud
+      uses: google-github-actions/auth@v2
+      with:
+        credentials_json: ${{ secrets.GCP_SA_KEY }}
+
+    - name: Configure Docker for GCP
+      run: gcloud auth configure-docker ${{ env.GCP_REGION }}-docker.pkg.dev
+
+    - name: Set image tag
+      run: |
+        if [ "${{ github.event_name }}" = "push" ] && [ "${{ github.ref_type }}" = "tag" ]; then
+          echo "IMAGE_TAG=${GITHUB_REF#refs/tags/v}" >> $GITHUB_ENV
+        else
+          echo "IMAGE_TAG=${{ github.event.inputs.image_tag }}" >> $GITHUB_ENV
+        fi
+
+    - name: Set up Node.js
+      uses: actions/setup-node@v4
+      with:
+        node-version: '20'
+        cache: 'npm'
+
+    # We let the multi-stage Dockerfile handle the build, OR we can do it here to cache.
+    # Dockerfile has a 'frontend' stage, so we don't strictly need to build here unless we want to cache node_modules better.
+    # For simplicity/depth, let's trust the Docker build process.
+    
+    - name: Build and push Docker image
+      run: |
+        echo "🔨 Building APP image with tag: $IMAGE_TAG"
+        docker build \
+          --platform linux/amd64 \
+          -f Dockerfile \
+          -t ${{ env.GCP_REGION }}-docker.pkg.dev/${{ env.GCP_PROJECT }}/${{ env.GCP_REPO }}/app:$IMAGE_TAG \
+          .
+        
+        echo "⬆️ Pushing image..."
+        docker push ${{ env.GCP_REGION }}-docker.pkg.dev/${{ env.GCP_PROJECT }}/${{ env.GCP_REPO }}/app:$IMAGE_TAG
+
+    - name: Set up kubectl
+      uses: azure/setup-kubectl@v3
+
+    - name: Configure kubectl
+      run: |
+        mkdir -p $HOME/.kube
+        echo "${{ secrets.KUBECONFIG }}" | base64 -d > $HOME/.kube/config
+        chmod 600 $HOME/.kube/config
+
+    - name: Apply Secrets
+      run: |
+        echo "🔑 Updating secrets..."
+        kubectl create secret generic amrilazim-secrets \
+          --from-literal=app-key="${{ secrets.APP_KEY }}" \
+          --from-literal=db-password="${{ secrets.DB_PASSWORD }}" \
+          --from-literal=redis-password="${{ secrets.REDIS_PASSWORD }}" \
+          --dry-run=client -o yaml | kubectl apply -f -
+
+    - name: Set up Helm
+      uses: azure/setup-helm@v3
+      with:
+        version: 'v3.9.0'
+
+    - name: Add Helm repository
+      run: |
+        helm repo add the-captain ${{ secrets.HELM_REPO_URL }}
+        helm repo update
+
+    - name: Deploy with Helm
+      run: |
+        echo "🚢 Deploying APP with tag: $IMAGE_TAG"
+        
+        helm upgrade amrilazim-portfolio \
+          -f .helm/values.yml \
+          --set image.tag=$IMAGE_TAG \
+          --install \
+          --wait \
+          --timeout=10m \
+          the-captain/larakube
+
+    - name: Verify deployment
+      run: |
+        kubectl rollout status deployment/amrilazim-portfolio-web --timeout=300s

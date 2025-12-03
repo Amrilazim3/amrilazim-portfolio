@@ -1,0 +1,168 @@
+# Default values for larakube.
+image:
+  repository: "asia-southeast1-docker.pkg.dev/amrilazim-portfolio/repo/app"
+  pullPolicy: IfNotPresent
+  tag: "latest"
+
+imagePullSecrets: 
+  - name: gcp-artifact-registry-secret
+
+nameOverride: "amrilazim-portfolio"
+fullnameOverride: "amrilazim-portfolio"
+
+serviceAccount:
+  create: true
+  automount: true
+  name: ""
+
+podSecurityContext:
+  fsGroup: 33 # www-data
+
+service:
+  type: ClusterIP
+  port: 80
+  containerPort: 80
+
+ingress:
+  enabled: true
+  className: "traefik"
+  annotations:
+    cert-manager.io/cluster-issuer: "letsencrypt-prod"
+  hosts:
+    - host: amrilazim.com
+      paths:
+        - path: /
+          pathType: ImplementationSpecific
+  tls:
+    - secretName: amrilazim-com-tls
+      hosts:
+        - amrilazim.com
+
+volumes:
+  - name: storage-volume
+    persistentVolumeClaim:
+      claimName: amrilazim-portfolio-pvc
+
+volumeMounts:
+  - name: storage-volume
+    mountPath: /var/www/html/storage
+    subPath: app
+
+env:
+  APP_NAME: "Amril Azim Portfolio"
+  APP_ENV: production
+  APP_DEBUG: "false"
+  APP_URL: https://amrilazim.com
+  LOG_CHANNEL: stderr
+  DB_CONNECTION: mysql
+  DB_HOST: mysql.default.svc.cluster.local
+  DB_PORT: "3306"
+  DB_DATABASE: amrilazim
+  DB_USERNAME: forge
+  FILESYSTEM_DISK: local
+  QUEUE_CONNECTION: redis
+  CACHE_STORE: redis
+  SESSION_DRIVER: redis
+  SESSION_LIFETIME: "120"
+  REDIS_HOST: redis-master
+  REDIS_PORT: "6379"
+  MAIL_MAILER: smtp
+  # PHP/Nginx Configuration for ServerSideUp image
+  PHP_OPCACHE_ENABLE: "1"
+  NGINX_WEBROOT: /var/www/html/public
+  AUTORUN_ENABLED: "false" # We use our own entrypoint
+
+web:
+  env: {}
+  # Default command uses the entrypoint from Dockerfile which runs setup then /init
+  command: [] 
+  
+  replicaCount: 2
+  
+  autoscaling:
+    enabled: true
+    minReplicas: 2
+    maxReplicas: 5
+    targetCPUUtilizationPercentage: 75
+
+  resources:
+    limits:
+      cpu: 500m
+      memory: 512Mi
+    requests:
+      cpu: 100m
+      memory: 128Mi
+
+  updateStrategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxSurge: 1
+      maxUnavailable: 0
+
+  livenessProbe:
+    httpGet:
+      path: /up # Laravel 11 health check, or standard
+      port: 80
+    initialDelaySeconds: 30
+    periodSeconds: 10
+
+  readinessProbe:
+    httpGet:
+      path: /up
+      port: 80
+    initialDelaySeconds: 5
+    periodSeconds: 5
+
+  pdb:
+    enabled: true
+    maxUnavailable: 1
+
+nginx:
+  enabled: false
+
+worker:
+  default:
+    enabled: true
+    command:
+      - /bin/sh
+      - -c
+      - "php artisan queue:work --tries=3 --timeout=90"
+    replicaCount: 1
+    resources:
+      limits:
+        cpu: 500m
+        memory: 256Mi
+      requests:
+        cpu: 100m
+        memory: 128Mi
+
+scheduler:
+  enabled: true
+  schedule: "* * * * *"
+  command:
+    - /bin/sh
+    - -c
+    - "php artisan schedule:run"
+  resources:
+    requests:
+      cpu: 50m
+      memory: 64Mi
+
+databaseMigration:
+  enabled: true
+  retry: 3
+  resources:
+    requests:
+      cpu: 100m
+      memory: 128Mi
+
+secretEnvs:
+  - name: APP_KEY
+    secretName: amrilazim-secrets
+    secretKey: app-key
+  - name: DB_PASSWORD
+    secretName: amrilazim-secrets
+    secretKey: db-password
+  - name: REDIS_PASSWORD
+    secretName: amrilazim-secrets
+    secretKey: redis-password
