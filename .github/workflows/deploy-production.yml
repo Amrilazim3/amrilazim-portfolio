@@ -13,8 +13,8 @@ on:
 
 env:
   GCP_REGION: asia-southeast1
-  GCP_PROJECT: amrilazim-portfolio
-  GCP_REPO: app
+  GCP_PROJECT: vortechron
+  GCP_REPO: amrilazim-portfolio
 
 jobs:
   deploy:
