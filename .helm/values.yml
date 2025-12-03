@@ -89,7 +89,7 @@ web:
   resources:
     limits:
       cpu: 500m
-      memory: 512Mi
+      memory: 312Mi
     requests:
       cpu: 100m
       memory: 128Mi
@@ -123,7 +123,7 @@ nginx:
 
 worker:
   default:
-    enabled: true
+    enabled: false
     command:
       - /bin/sh
       - -c
@@ -138,7 +138,7 @@ worker:
         memory: 128Mi
 
 scheduler:
-  enabled: true
+  enabled: false
   schedule: "* * * * *"
   command:
     - /bin/sh
