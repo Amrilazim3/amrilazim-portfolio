@@ -1,6 +1,6 @@
 # Default values for larakube.
 image:
-  repository: "asia-southeast1-docker.pkg.dev/amrilazim-portfolio/repo/app"
+  repository: "asia-southeast1-docker.pkg.dev/vortechron/amrilazim-portfolio/app"
   pullPolicy: IfNotPresent
   tag: "latest"
 
