@@ -16,12 +16,12 @@ serviceAccount:
   name: ""
 
 podSecurityContext:
-  fsGroup: 33 # www-data
+  fsGroup: 9999 # webuser (serversideup/php)
 
 service:
   type: ClusterIP
   port: 80
-  containerPort: 80
+  containerPort: 8080  # serversideup/php uses port 8080
 
 ingress:
   enabled: true
@@ -70,11 +70,12 @@ env:
   # PHP/Nginx Configuration for ServerSideUp image
   PHP_OPCACHE_ENABLE: "1"
   NGINX_WEBROOT: /var/www/html/public
-  AUTORUN_ENABLED: "false" # We use our own entrypoint
+  # Note: serversideup/php uses port 8080 by default
+  # APP_PORT: "8080"  # Optional: explicit port configuration
 
 web:
   env: {}
-  # Default command uses the entrypoint from Dockerfile which runs setup then /init
+  # Uses serversideup/php entrypoint with custom startup script in /etc/entrypoint.d/
   command: [] 
   
   replicaCount: 2
@@ -102,14 +103,14 @@ web:
   livenessProbe:
     httpGet:
       path: /up # Laravel 11 health check, or standard
-      port: 80
+      port: 8080
     initialDelaySeconds: 30
     periodSeconds: 10
 
   readinessProbe:
     httpGet:
       path: /up
-      port: 80
+      port: 8080
     initialDelaySeconds: 5
     periodSeconds: 5
 
