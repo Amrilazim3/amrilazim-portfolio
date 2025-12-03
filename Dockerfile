@@ -10,6 +10,9 @@ RUN npm run build
 
 FROM serversideup/php:8.2-fpm-nginx
 
+# Ensure we're running as root for package installation
+USER root
+
 # Install additional dependencies if needed (ImageMagick, etc.)
 RUN apt-get update \
     && apt-get install -y --no-install-recommends \
