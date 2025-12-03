@@ -70,6 +70,7 @@ env:
   APP_NAME: "Amril Azim Portfolio"
   APP_ENV: production
   APP_DEBUG: "false"
+  APP_KEY: "base64:+/cEUDQD5nre1vi7eUDQTOm3w9VJQxRp+oJJVSgGb/0="
   APP_URL: https://amrilazim.com
   LOG_CHANNEL: stderr
   DB_CONNECTION: mysql
@@ -96,10 +97,10 @@ web:
   # Uses serversideup/php entrypoint with custom startup script in /etc/entrypoint.d/
   command: [] 
   
-  replicaCount: 2
+  replicaCount: 1
   
   autoscaling:
-    enabled: true
+    enabled: false
     minReplicas: 2
     maxReplicas: 5
     targetCPUUtilizationPercentage: 75
@@ -118,19 +119,19 @@ web:
       maxSurge: 1
       maxUnavailable: 0
 
-  livenessProbe:
-    httpGet:
-      path: /up # Laravel 11 health check, or standard
-      port: 8080
-    initialDelaySeconds: 30
-    periodSeconds: 10
+  # livenessProbe:
+  #   httpGet:
+  #     path: /up # Laravel 11 health check, or standard
+  #     port: 8080
+  #   initialDelaySeconds: 30
+  #   periodSeconds: 10
 
-  readinessProbe:
-    httpGet:
-      path: /up
-      port: 8080
-    initialDelaySeconds: 5
-    periodSeconds: 5
+  # readinessProbe:
+  #   httpGet:
+  #     path: /up
+  #     port: 8080
+  #   initialDelaySeconds: 5
+  #   periodSeconds: 5
 
   pdb:
     enabled: true
@@ -176,9 +177,6 @@ databaseMigration:
       memory: 128Mi
 
 secretEnvs:
-  - name: APP_KEY
-    secretName: amrilazim-secrets
-    secretKey: app-key
   - name: DB_PASSWORD
     secretName: amrilazim-secrets
     secretKey: db-password
