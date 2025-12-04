@@ -2,7 +2,7 @@
 image:
   repository: "asia-southeast1-docker.pkg.dev/vortechron/amrilazim-portfolio/app"
   pullPolicy: IfNotPresent
-  tag: "1.0.8"
+  tag: "latest"
 
 imagePullSecrets: 
   - name: gcp-artifact-registry-secret
