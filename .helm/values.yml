@@ -16,7 +16,7 @@ serviceAccount:
   name: ""
 
 podSecurityContext:
-  fsGroup: 9999 # webuser (serversideup/php)
+  fsGroup: 33 # www-data
 
 service:
   type: ClusterIP
