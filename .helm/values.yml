@@ -2,7 +2,7 @@
 image:
   repository: "asia-southeast1-docker.pkg.dev/vortechron/amrilazim-portfolio/app"
   pullPolicy: IfNotPresent
-  tag: "latest"
+  tag: "1.0.8"
 
 imagePullSecrets: 
   - name: gcp-artifact-registry-secret
@@ -40,31 +40,12 @@ ingress:
 
 volumes:
   - name: amrilazim-portfolio-storage
-    emptyDir: {}
-  
+    persistentVolumeClaim:
+      claimName: amrilazim-portfolio-pvc
 
 volumeMounts:
   - name: amrilazim-portfolio-storage
     mountPath: /var/www/html/storage
-    subPath: app/public
-  - name: amrilazim-portfolio-storage
-    mountPath: /var/www/html/storage/framework
-    subPath: framework
-  - name: amrilazim-portfolio-storage
-    mountPath: /var/www/html/storage/framework/cache
-    subPath: framework/cache
-  - name: amrilazim-portfolio-storage
-    mountPath: /var/www/html/storage/framework/sessions
-    subPath: framework/sessions
-  - name: amrilazim-portfolio-storage
-    mountPath: /var/www/html/storage/framework/views
-    subPath: framework/views
-  - name: amrilazim-portfolio-storage
-    mountPath: /var/www/html/storage/logs
-    subPath: logs
-  - name: amrilazim-portfolio-storage
-    mountPath: /var/www/html/storage/media-library/temp
-    subPath: temp
 
 env:
   APP_NAME: "Amril Azim Portfolio"
